@@ -12,3 +12,4 @@
 */
 
 Route::get('/', 'PagesController@RenderHomePage');
+Route::get('/alert', 'PagesController@RedirectTest');
