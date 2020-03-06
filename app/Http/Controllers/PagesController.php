@@ -11,11 +11,11 @@ class PagesController extends Controller
     	return view('home');
     }
 
+    public function RenderTest(){
 
-
-    public function RedirectTest(){
-
-    	return redirect('/')->with('info','Signed up successfully!');
-    	
+    	return view('pages.test');
     }
+
+
+
 }

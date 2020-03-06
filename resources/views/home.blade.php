@@ -11,10 +11,13 @@
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
                             {{ session('status') }}
+
                         </div>
                     @endif
 
-                    You are logged in!
+                    @if(Auth::guest())
+                        <h1>You must sign in</h1>
+                    @endif
                 </div>
             </div>
         </div>

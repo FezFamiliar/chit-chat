@@ -25,6 +25,19 @@
               <li class="nav-item">
                 <a class="nav-link" href="/posts">Blog</a>
               </li>
+              @if(Auth::check())
+                <form class="form-inline active-cyan-3 active-cyan-4">
+                <div class="input-group md-form form-sm form-2 pl-0">
+                  <input class="form-control my-0 py-1" style="outline:none !Important;"type="text" placeholder="Search" aria-label="Search">
+                  <div class="input-group-append">
+                    <button type="submit" id="something">
+                      <span class="input-group-text cyan lighten-2" id="basic-text1"><img src="https://img.icons8.com/ios/23/000000/search--v1.png"></span>
+                    </button>
+                    
+                  </div>
+              </div>
+              </form>
+              @endif
           </ul>
 
           <!-- Right Side Of Navbar -->

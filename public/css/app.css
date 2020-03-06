@@ -11,3 +11,16 @@
 *{
 	font-family: 'Nunito';
 }
+
+#something{
+	padding:0px;
+	border:none;
+}
+#something:hover{
+	cursor:pointer;
+}
+
+.form-control:focus {
+    box-shadow: none;
+  
+}
