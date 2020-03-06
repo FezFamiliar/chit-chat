@@ -13,3 +13,6 @@
 
 Route::get('/', 'PagesController@RenderHomePage');
 Route::get('/alert', 'PagesController@RedirectTest');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
