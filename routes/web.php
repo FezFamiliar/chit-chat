@@ -12,8 +12,11 @@
 */
 
 Route::get('/', 'PagesController@RenderHomePage');
-Route::get('/alert', 'PagesController@RedirectTest');
 Auth::routes();
+Route::get('/timeline', 'PagesController@RenderTimeline');
+Route::get('/friends', 'PagesController@RenderFriends');
+Route::get('/search', [
+	'as' => 'search.results',
+	'uses' => 'SearchController@GetResults'
 
-Route::get('/home', 'HomeController@index')->name('home');
-Route::get('profile','PagesController@RenderTest');
+]);

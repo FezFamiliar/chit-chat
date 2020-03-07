@@ -10,28 +10,19 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <!-- Left Side Of Navbar -->
           <ul class="navbar-nav mr-auto">
-              <li class="nav-item active">
-                <a class="nav-link" href="/">Timeline <span class="sr-only">(current)</span></a>
-              </li>
+              @if(Auth::check())
               <li class="nav-item">
-                <a class="nav-link" href="/profile">Profile</a>
-              </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link" href="/about">About</a>
+                <a class="nav-link" href="{{ url('/timeline') }}">Timeline <span class="sr-only">(current)</span></a>
               </li>
                <li class="nav-item">
-                <a class="nav-link" href="/service">Service</a>
+                <a class="nav-link" href="{{ url('/friends') }}">Friends</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/posts">Blog</a>
-              </li>
-              @if(Auth::check())
-                <form class="form-inline active-cyan-3 active-cyan-4">
+                <form class="form-inline active-cyan-3 active-cyan-4" action="{{ route('search.results') }}">
                 <div class="input-group md-form form-sm form-2 pl-0">
-                  <input class="form-control my-0 py-1" style="outline:none !Important;"type="text" placeholder="Search" aria-label="Search">
+                  <input class="form-control my-0 py-1" type="text" placeholder="Search" aria-label="Search" name="query">
                   <div class="input-group-append">
                     <button type="submit" id="something">
-                      <span class="input-group-text cyan lighten-2" id="basic-text1"><img src="https://img.icons8.com/ios/23/000000/search--v1.png"></span>
+                      <span class="input-group-text cyan lighten-2" id="basic-text1"><img src="{{ asset('img/search.png') }}"></span>
                     </button>
                     
                   </div>
@@ -64,7 +55,8 @@
                                            document.getElementById('logout-form').submit();">
                               {{ __('Logout') }}
                           </a>
-
+                          <a class="dropdown-item" href="{{ url('/profile') }}">Profile</a>
+                          <a class="dropdown-item" href="{{ url('/settings') }}">Settings</a>
                           <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                               @csrf
                           </form>

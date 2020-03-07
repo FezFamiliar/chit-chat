@@ -10,6 +10,11 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     <link rel="stylesheet"    href="{{ asset('css/app.css') }}" >
     <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
+    <script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+  <script type="text/javascript" src="{{ asset('js/test.js') }}"></script>
 </head>
 <body>
     <div id="app">

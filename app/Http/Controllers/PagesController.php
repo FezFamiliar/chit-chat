@@ -11,11 +11,16 @@ class PagesController extends Controller
     	return view('home');
     }
 
-    public function RenderTest(){
 
-    	return view('pages.test');
+    public function RenderTimeline(){
+
+    	return view('pages.timeline');
     }
 
 
+    public function RenderFriends(){
+
+    	return view('pages.friends');
+    }
 
 }
