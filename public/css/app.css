@@ -24,3 +24,11 @@
     box-shadow: none;
   
 }
+
+.media-body{
+	padding:10px;
+}
+
+#post .form-group:last-child{
+	text-align: right;
+}

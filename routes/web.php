@@ -20,3 +20,4 @@ Route::get('/search', [
 	'uses' => 'SearchController@GetResults'
 
 ]);
+Route::get('/profile', 'PagesController@RenderProfile');

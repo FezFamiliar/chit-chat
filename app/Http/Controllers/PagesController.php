@@ -11,7 +11,6 @@ class PagesController extends Controller
     	return view('home');
     }
 
-
     public function RenderTimeline(){
 
     	return view('pages.timeline');
@@ -21,6 +20,11 @@ class PagesController extends Controller
     public function RenderFriends(){
 
     	return view('pages.friends');
+    }
+
+    public function RenderProfile(){
+
+    	return view('pages.profile');
     }
 
 }
