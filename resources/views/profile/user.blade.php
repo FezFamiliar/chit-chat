@@ -7,9 +7,18 @@
 			@include('inc.userblock')
 			<hr>
 		</div>
-		<div class="col-lg-4 col-lg-offset-3">
-			
+		<div class="offset-lg-3 col-lg-4">
+			<h4>{{ $user->name }}'s friends</h4>
 
+
+ 			@if(!$user->friends()->count())
+				<p>{{ $user->name }} has no friends.</p>
+
+			@else
+				@foreach($user->friends() as $user)
+					@include('inc.userblock')
+				@endforeach
+			@endif 
 		</div>
 	</div>
 </div>

@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Foundation\Auth\User;
+//use Illuminate\Foundation\Auth\User;
 use Illuminate\Support\Facades\Auth;
+use App\User;
 
 class ProfileController extends Controller
 {
+
     public function getProfile($username){
 
 
