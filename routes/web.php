@@ -17,7 +17,12 @@ Route::get('/timeline', 'PagesController@RenderTimeline');
 Route::get('/friends', 'PagesController@RenderFriends');
 Route::get('/search', [
 	'as' => 'search.results',
-	'uses' => 'SearchController@GetResults'
+	'uses' => 'SearchController@getResults'
 
 ]);
 Route::get('/profile', 'PagesController@RenderProfile');
+Route::get('/user/{username}', [
+	'as' => 'user.profile',
+	'uses' => 'ProfileController@getProfile'
+
+]);

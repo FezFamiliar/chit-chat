@@ -24,7 +24,7 @@ class PagesController extends Controller
 
     public function RenderProfile(){
 
-    	return view('pages.profile');
+    	return view('pages.me');
     }
 
 }

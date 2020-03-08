@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\User;
 class SearchController extends Controller
 {
-    public function GetResults(Request $request){
+    public function getResults(Request $request){
 
     	$query = $request->input('query');
     	if(!$query){
