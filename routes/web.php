@@ -26,3 +26,14 @@ Route::get('/user/{username}', [
 	'uses' => 'ProfileController@getProfile'
 
 ]);
+
+Route::get('/profile/edit', [
+	'as' => 'profile.edit',
+	'uses' => 'ProfileController@getEdit'
+
+]);
+
+Route::post('/profile/edit', [
+	'uses' => 'ProfileController@postEdit'
+
+]);
