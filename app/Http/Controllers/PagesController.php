@@ -16,15 +16,4 @@ class PagesController extends Controller
     	return view('pages.timeline');
     }
 
-
-    public function RenderFriends(){
-
-    	return view('pages.friends');
-    }
-
-    public function RenderProfile(){
-
-    	return view('pages.me');
-    }
-
 }

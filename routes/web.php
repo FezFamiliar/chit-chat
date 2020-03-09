@@ -14,7 +14,6 @@
 Route::get('/', 'PagesController@RenderHomePage');
 Auth::routes();
 Route::get('/timeline', 'PagesController@RenderTimeline');
-Route::get('/friends', 'PagesController@RenderFriends');
 Route::get('/search', [
 	'as' => 'search.results',
 	'uses' => 'SearchController@getResults'
@@ -37,3 +36,4 @@ Route::post('/profile/edit', [
 	'uses' => 'ProfileController@postEdit'
 
 ]);
+Route::get('/friends','FriendController@getFriends');

@@ -4,10 +4,18 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-6">
-				<h2>Your Friends</h2>
+				<h3>Your Friends</h3>
+				@if(!Auth::user()->friends()->count())
+					<p>you have no friends.</p>
+
+				@else
+					@foreach(Auth::user()->friends() as $user)
+						@include('inc.userblock')
+					@endforeach
+				@endif 
 			</div>
 			<div class="col-md-6">
-				<h2>Friend Requests</h2>
+				<h4>Friend Requests</h4>
 			</div>
 		</div>
 	</div>
