@@ -59,4 +59,44 @@ class User extends Authenticatable
         // where pivot acepted true basically means, WHERE accepted = true pivot table is the friuends table
         return $this->friendsOfMine()->wherePivot('accepted','1')->get()->merge($this->friendOf()->wherePivot('accepted','1')->get());  
     }
+
+    public function getFriendReq(){
+
+        return $this->friendsOfMine()->wherePivot('accepted','0')->get();
+    }
+
+    public function getFriendReqPending(){
+
+        return $this->friendOf()->wherePivot('accepted','0')->get();
+    }
+
+
+    public function hasFriendReqPending(User $user){
+
+        return (bool)$this->getFriendReqPending()->where('id',$user->id)->count();
+    }
+
+
+    public function hasFriendReqReceived(User $user){
+            
+        return (bool)$this->getFriendReq()->where('id',$user->id)->count();
+    }
+
+    public function addFriend(User $user){
+
+         $this->friendOf()->attach($user->id, ['accepted' => '0']);
+
+    }
+
+    public function acceptFriendReq(User $user){
+
+        $this->getFriendReq()->where('id',$user->id)->first()->pivot->update(['accepted' => '1']);
+    }
+
+    public function isFriendsWith(User $user){
+
+        return (bool) $this->friends()->where('id',$user->id)->count();
+    }
+
+
 }

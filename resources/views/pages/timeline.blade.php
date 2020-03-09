@@ -2,6 +2,7 @@
 
 @section('content')
 	<div class="container">
+		@include('inc.flash')
 	    <div class="row justify-content-center">
 	        <div class="col-md-8">
 	        		<form method="POST" action="{{ route('search.results') }}" id="post">

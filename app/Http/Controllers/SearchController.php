@@ -16,7 +16,7 @@ class SearchController extends Controller
 		}
 
     	$users = user::where('name', 'LIKE', "%{$query}%")->get();
-
+    	
     	return view('search.results')->with('users',$users);
     }
 }

@@ -13,7 +13,11 @@
 
 Route::get('/', 'PagesController@RenderHomePage');
 Auth::routes();
-Route::get('/timeline', 'PagesController@RenderTimeline');
+Route::get('/timeline', [
+
+		'as' => 'timeline',
+		'uses' => 'PagesController@RenderTimeline'
+]);
 Route::get('/search', [
 	'as' => 'search.results',
 	'uses' => 'SearchController@getResults'
@@ -37,3 +41,16 @@ Route::post('/profile/edit', [
 
 ]);
 Route::get('/friends','FriendController@getFriends');
+
+Route::get('/friends/add/{username}', [
+	'as' => 'add.as.friend',
+	'uses' => 'FriendController@Add'
+
+]);
+
+
+Route::get('/friends/accept/{username}', [
+	'as' => 'accepted.friend',
+	'uses' => 'FriendController@Accept'
+
+]);
