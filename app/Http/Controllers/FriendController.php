@@ -11,7 +11,11 @@ class FriendController extends Controller
     
     public function getFriends(){
 
-    	$req = Auth::user()->getFriendReq();
+       
+
+        $req = Auth::user()->getFriendReq();
+        
+
     	return view('pages.friends')->with('requests',$req);
     }
 
@@ -31,7 +35,7 @@ class FriendController extends Controller
             return redirect()->route('timeline');
         }
 
-        
+
     	if(Auth::user()->hasFriendReqPending($user) || $user->hasFriendReqPending(Auth::user())){
 
     			return redirect()->route('user.profile',['username' => $user->name])->with('info','Friend request already pending');
@@ -46,7 +50,7 @@ class FriendController extends Controller
 
     	Auth::user()->addFriend($user);
 
-    	return redirect()->route('user.profile',['username' => $user->name])->with('info','Friend Request sent');
+    	return redirect()->route('user.profile',['username' => $user->name])->with('info','Friend Request Sent');
     }
 
     public function Accept($user){
@@ -71,5 +75,22 @@ class FriendController extends Controller
 
         return redirect()->route('user.profile',['username' => $user->name])->with('info','Friend Request accepted');
 
+    }
+
+
+
+    public function Ignore($user){
+
+        $user = User::where('name' ,$user)->first();
+        
+
+        if(!$user){
+
+            return redirect()->route('timeline')->with('info','That user could not be found.');
+        }
+
+        DB::delete('DELETE FROM friends WHERE friend_id = ' . $user->id);
+
+        return redirect()->route('user.profile',['username' => $user->name])->with('info','Friend Request Ignored.');
     }
 }

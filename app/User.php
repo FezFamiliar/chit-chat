@@ -98,5 +98,7 @@ class User extends Authenticatable
         return (bool) $this->friends()->where('id',$user->id)->count();
     }
 
-
+    // public function ignoreFriendReq(User $user){
+    //      $this->friendOf()->wherePivot('friend_id',$user->id)->delete();
+    // }
 }

@@ -17,7 +17,7 @@
 			<div class="col-md-6">
 				<h4>Friend Requests</h4>
 				@if(!$requests->count())
-					<p>you have no friends requests</p>
+					<p>you have no friends requests.</p>
 					
 				@else
 					@foreach($requests as $user)

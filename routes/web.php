@@ -54,3 +54,9 @@ Route::get('/friends/accept/{username}', [
 	'uses' => 'FriendController@Accept'
 
 ]);
+
+Route::get('/friends/ignore/{username}', [
+	'as' => 'ignore.friend',
+	'uses' => 'FriendController@Ignore'
+
+]);

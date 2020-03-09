@@ -4,25 +4,22 @@
 <div class="container">
 	@include('inc.flash')
 	<div class="row">
-
 		<div class="col-lg-5">
+			@if(Auth::user()->hasFriendReqPending($user)) 
+				<p>	Waiting for {{ $user->name }} to accept your friend request.</p>
+			@elseif(Auth::user()->hasFriendReqReceived($user))
+				<a href="{{ route('ignore.friend',['username' => $user->name]) }}" class="btn btn-secondary float-right">Ignore</a> 
+				<a href="{{ route('accepted.friend',['username' => $user->name]) }}" class="btn btn-primary float-right mr-2">Accept Friend Request</a>  
+			@elseif(Auth::user()->isFriendsWith($user))
+					<p>	You and {{ $user->name }} are friends</p>
+			@elseif(Auth::user()->id !== $user->id)
+					<a href="{{ route('add.as.friend',['username' => $user->name]) }}" class="btn btn-primary float-right">Add as friend</a>
+			@endif
 			@include('inc.userblock')
 
 			<hr>
 		</div>
 		<div class="offset-lg-3 col-lg-4">
-
-			@if(Auth::user()->hasFriendReqPending($user)) 
-
-				<p>	Waiting for {{ $user->name }} to accept your friend request</p>
-			@elseif(Auth::user()->hasFriendReqReceived($user))
-				<a href="{{ route('accepted.friend',['username' => $user->name]) }}" class="btn btn-primary">Accept friend request</a>
-				{{-- <a href="" class="btn btn-danger">Ignore</a> --}}
-			@elseif(Auth::user()->isFriendsWith($user))
-					<p>	You and {{ $user->name }} are friends</p>
-			@elseif(Auth::user()->id !== $user->id)
-					<a href="{{ route('add.as.friend',['username' => $user->name]) }}" class="btn btn-primary">Add as friend</a>
-			@endif
 
 			@if(Request::is('user/' . Auth::user()->name))
 				<h4>Your friends</h4> 
