@@ -25,32 +25,33 @@ class FriendController extends Controller
 
     	$user = User::where('name' ,$user)->first();
 
-    	if(!$user){
+    	if(!$user){    // cant add user that doesnt exist
 
-    		return redirect()->route('timeline')->with('info','That user could not be found');
+    		return redirect()->route('timeline')->with('info','That user could not be found.');
     	}
 
 
-        if(Auth::user()->id === $user->id){
+        if(Auth::user()->id === $user->id){    // cant add yourself
+
             return redirect()->route('timeline');
         }
 
 
-    	if(Auth::user()->hasFriendReqPending($user) || $user->hasFriendReqPending(Auth::user())){
+    	if(Auth::user()->hasFriendReqPending($user) || $user->hasFriendReqPending(Auth::user())){  // cant add friend twice
 
-    			return redirect()->route('user.profile',['username' => $user->name])->with('info','Friend request already pending');
+    			return redirect()->route('user.profile',['username' => $user->name])->with('info','Friend request already pending.');
     	}
 
 
-    	if(Auth::user()->isFriendsWith($user)){
-    		return redirect()->route('user.profile',['username' => $user->name])->with('info','You are already friends');
+    	if(Auth::user()->isFriendsWith($user)){ // you guys are already buddies, you cant add him twice.
+    		return redirect()->route('user.profile',['username' => $user->name])->with('info','You are already friends.');
     	}
 
 
 
     	Auth::user()->addFriend($user);
 
-    	return redirect()->route('user.profile',['username' => $user->name])->with('info','Friend Request Sent');
+    	return redirect()->route('user.profile',['username' => $user->name])->with('info','Friend Request Sent.');
     }
 
     public function Accept($user){
@@ -59,21 +60,27 @@ class FriendController extends Controller
         
         if(!$user){
 
-            return redirect()->route('timeline')->with('info','That user could not be found');
+            return redirect()->route('timeline')->with('info','That user could not be found.');
         }
 
+        if(Auth::user()->isFriendsWith($user)){ // you guys are already buddies, you cant accept him twice.
+            return redirect()->route('user.profile',['username' => $user->name])->with('info','You are already friends.');
+        }
     
         if(!Auth::user()->hasFriendReqReceived($user)){
 
         
-            return redirect()->route('timeline');
+            return redirect()->route('timeline')->with('info','You didn\'t receive a friend request from that user.');
         }
     
+
+
+
 
         Auth::user()->acceptFriendReq($user);
        
 
-        return redirect()->route('user.profile',['username' => $user->name])->with('info','Friend Request accepted');
+        return redirect()->route('user.profile',['username' => $user->name])->with('info','Friend Request accepted.');
 
     }
 
@@ -89,7 +96,18 @@ class FriendController extends Controller
             return redirect()->route('timeline')->with('info','That user could not be found.');
         }
 
-        DB::delete('DELETE FROM friends WHERE friend_id = ' . $user->id);
+        if(Auth::user()->isFriendsWith($user)){ 
+            return redirect()->route('user.profile',['username' => $user->name])->with('info','You are already friends.');
+        }
+
+        if(!Auth::user()->hasFriendReqReceived($user)){
+
+        
+            return redirect()->route('timeline')->with('info','You didn\'t receive a friend request from that user.');
+        }
+
+        
+        DB::delete('DELETE FROM friends WHERE friend_id = ' . $user->id . ' AND user_id = ' . Auth::user()->id);
 
         return redirect()->route('user.profile',['username' => $user->name])->with('info','Friend Request Ignored.');
     }
