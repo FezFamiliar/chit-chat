@@ -66,7 +66,12 @@ class FriendController extends Controller
         if(Auth::user()->isFriendsWith($user)){ // you guys are already buddies, you cant accept him twice.
             return redirect()->route('user.profile',['username' => $user->name])->with('info','You are already friends.');
         }
-    
+        
+        if(Auth::user()->id === $user->id){    
+
+            return redirect()->route('timeline');
+        }
+
         if(!Auth::user()->hasFriendReqReceived($user)){
 
         
@@ -100,6 +105,13 @@ class FriendController extends Controller
             return redirect()->route('user.profile',['username' => $user->name])->with('info','You are already friends.');
         }
 
+        if(Auth::user()->id === $user->id){    
+
+            return redirect()->route('timeline');
+        }
+
+
+
         if(!Auth::user()->hasFriendReqReceived($user)){
 
         
@@ -110,5 +122,36 @@ class FriendController extends Controller
         DB::delete('DELETE FROM friends WHERE friend_id = ' . $user->id . ' AND user_id = ' . Auth::user()->id);
 
         return redirect()->route('user.profile',['username' => $user->name])->with('info','Friend Request Ignored.');
+    }
+
+
+    public function Unfriend($user){
+
+
+        $user = User::where('name' ,$user)->first();
+        
+        if(!$user){
+
+            return redirect()->route('timeline')->with('info','That user could not be found.');
+        }
+
+
+        if(Auth::user()->id === $user->id){    // cant unfriend yourself
+
+            return redirect()->route('timeline')->with('info','You can\'t unfriend yourself');
+        }
+
+
+        if(!Auth::user()->isFriendsWith($user)){
+            return redirect()->route('user.profile',['username' => $user->name])->with('info','You are not friends.');
+        }
+    
+
+
+
+       DB::delete('DELETE FROM friends WHERE (user_id = ' . $user->id . ' AND friend_id = ' . Auth::user()->id . ') OR user_id = ' . Auth::user()->id . ' AND friend_id = ' . $user->id);
+       
+
+        return redirect()->route('user.profile',['username' => $user->name])->with('info','Unfriended.');
     }
 }

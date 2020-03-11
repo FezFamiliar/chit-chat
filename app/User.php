@@ -55,8 +55,6 @@ class User extends Authenticatable
 
     public function friends(){
     
-            // friends of this user where the user has accepted
-        // where pivot acepted true basically means, WHERE accepted = true pivot table is the friuends table
         return $this->friendsOfMine()->wherePivot('accepted','1')->get()->merge($this->friendOf()->wherePivot('accepted','1')->get());  
     }
 
@@ -84,13 +82,13 @@ class User extends Authenticatable
 
     public function addFriend(User $user){
 
-         $this->friendOf()->attach($user->id, ['accepted' => '0']);
+         $this->friendOf()->attach($user->id, ['accepted' => '0','created_at' => NOW(), 'updated_at' => NOW()]);
 
     }
 
     public function acceptFriendReq(User $user){
 
-        $this->getFriendReq()->where('id',$user->id)->first()->pivot->update(['accepted' => '1']);
+        $this->getFriendReq()->where('id',$user->id)->first()->pivot->update(['accepted' => '1','updated_at' => NOW()]);
     }
 
     public function isFriendsWith(User $user){
@@ -98,7 +96,5 @@ class User extends Authenticatable
         return (bool) $this->friends()->where('id',$user->id)->count();
     }
 
-    // public function ignoreFriendReq(User $user){
-    //      $this->friendOf()->wherePivot('friend_id',$user->id)->delete();
-    // }
+
 }

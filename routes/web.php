@@ -60,3 +60,10 @@ Route::get('/friends/ignore/{username}', [
 	'uses' => 'FriendController@Ignore'
 
 ]);
+
+
+Route::get('/friends/unfriend/{username}', [
+	'as' => 'unfriend.friend',
+	'uses' => 'FriendController@Unfriend'
+
+]);

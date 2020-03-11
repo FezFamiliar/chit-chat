@@ -11,12 +11,12 @@
 				<a href="{{ route('ignore.friend',['username' => $user->name]) }}" class="btn btn-secondary float-right">Ignore</a> 
 				<a href="{{ route('accepted.friend',['username' => $user->name]) }}" class="btn btn-primary float-right mr-2">Accept Friend Request</a>  
 			@elseif(Auth::user()->isFriendsWith($user))
-					<p>	You and {{ $user->name }} are friends.</p>
+					<span>	You and {{ $user->name }} are friends.</span>
+					<a href="{{ route('unfriend.friend',['username' => $user->name]) }}" class="btn btn-secondary float-right">Unfriend {{ $user->name }}</a>
 			@elseif(Auth::user()->id !== $user->id)
 					<a href="{{ route('add.as.friend',['username' => $user->name]) }}" class="btn btn-primary float-right">Add as friend</a>
 			@endif
 			@include('inc.userblock')
-
 			<hr>
 		</div>
 		<div class="offset-lg-2 col-lg-5">
@@ -39,7 +39,6 @@
  						@if(Auth::user()->isFriendsWith($user))
  						<b>Mutual</b>   
 							@include('inc.userblock')
-							
 						@else  
 							@include('inc.userblock')
 						@endif
