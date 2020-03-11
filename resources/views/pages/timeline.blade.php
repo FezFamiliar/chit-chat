@@ -19,22 +19,22 @@
 	        				<input type="submit" value="Post" class="btn btn-outline-info">
 	        			</div>
 	            	</form>
-	            <div class="card">
-	                <div class="card-header">Dashboard</div>
-
+	            <div class=""> 
+	                <div class="card-header mb-3">Dashboard</div>
+	                @if($posts->count() > 0)
+	                	@foreach($posts as $post)
+	                		@include('inc.posts')
+	                	@endforeach
+	                @else
+	                	Theres nothing here, yet
+	                @endif
 	                <div class="card-body">
-{{-- 	                    @if (session('status'))
-	                        <div class="alert alert-success" role="alert">
-	                            {{ session('status') }}
-
-	                        </div>
-	                    @endif --}}
 
 	                    @if(Auth::guest())
 	                         <h1 class="text-center">You are not signed in!</h1> 
 	                    @endif
 	                </div>
-	            </div>
+	             </div>
 	        </div>
 	    </div>
 	</div>
