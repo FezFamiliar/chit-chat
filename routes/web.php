@@ -67,3 +67,10 @@ Route::get('/friends/unfriend/{username}', [
 	'uses' => 'FriendController@Unfriend'
 
 ]);
+
+
+Route::post('/post', [
+	'as' => 'post.it',
+	'uses' => 'PostsController@Post'
+
+]);

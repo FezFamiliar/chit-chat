@@ -63,6 +63,11 @@ class User extends Authenticatable
         return $this->friendsOfMine()->wherePivot('accepted','0')->get();
     }
 
+
+    public function posts(){
+
+        return $this->hasMany('App\Post','user_id');
+    }
     public function getFriendReqPending(){
 
         return $this->friendOf()->wherePivot('accepted','0')->get();

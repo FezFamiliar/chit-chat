@@ -5,9 +5,15 @@
 		@include('inc.flash')
 	    <div class="row justify-content-center">
 	        <div class="col-md-8">
-	        		<form method="POST" action="{{ route('search.results') }}" id="post">
+	        		<form method="POST" action="{{ route('post.it') }}" id="post">
+	        			@csrf
+	        			@if($errors->has('post-body'))
+	        				<div class="alert alert-danger">
+	        					This field is required.
+	        				</div>
+	        			@endif
 	        			<div class="form-group">
-		            		<textarea type="text" name="post" class="form-control" placeholder="Whats on your mind, {{ Auth::user()->name }}?" rows="3"></textarea>
+		            		<textarea type="text" name="post-body" class="form-control" placeholder="Whats on your mind, {{ Auth::user()->name }}?" rows="3"></textarea>
 	        			</div>
 	        			<div class="form-group">
 	        				<input type="submit" value="Post" class="btn btn-outline-info">
