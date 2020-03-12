@@ -1,7 +1,7 @@
 <div class="media">
-<a class="pull-left" href="{{ route('user.profile', ['username' => Auth::user()->name]) }}"><img class="media-object" src="https://www.gravatar.com/avatar/{{ md5($post->user->email) }}?d=mm" alt="{{ $post->user->name }}"></a>
+<a class="pull-left" href="{{ route('user.profile', ['username' => $post->user->name]) }}"><img class="media-object" src="https://www.gravatar.com/avatar/{{ md5($post->user->email) }}?d=mm" alt="{{ $post->user->name }}"></a>
 <div class="media-body">
-	<h4 class="media-heading"><a href="{{ route('user.profile', ['username' => Auth::user()->name]) }}">{{ $post->user->name }}</a></h4>
+	<h4 class="media-heading"><a href="{{ route('user.profile', ['username' => $post->user->name]) }}">{{ $post->user->name }}</a></h4>
 	<p>{{ $post->body }}</p>
 	<ul class="list-inline">
 		<li>{{ $post->created_at }}</li>
