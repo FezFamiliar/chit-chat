@@ -36,11 +36,7 @@
 			@else
 				@foreach($user->friends() as $user)
 					@if($user->id !== Auth::user()->id)
-{{-- 					@if(Request::url('user/' . Auth::user()->name))
-							ff
-					@endif --}}
- 						@if(Auth::user()->isFriendsWith($user) && !Request::url('user/' . Auth::user()->name))
-
+ 						@if(Auth::user()->isFriendsWith($user) && Request::url() != 'http://chitchat.loc/user/' . Auth::user()->name)
  						<b>Mutual</b>   
 							@include('inc.userblock')
 						@else  
