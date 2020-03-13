@@ -74,3 +74,9 @@ Route::post('/post', [
 	'uses' => 'PostsController@Post'
 
 ]);
+
+Route::post('/reply/{postid}', [
+	'as' => 'reply.post',
+	'uses' => 'PostsController@postReply'
+
+]);

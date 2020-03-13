@@ -19,7 +19,7 @@
 	        				<input type="submit" value="Post" class="btn btn-outline-info">
 	        			</div>
 	            	</form>
-	            <div class=""> 
+	            <div class="card"> 
 	                <div class="card-header mb-3">Dashboard</div>
 	                @if($posts->count() > 0)
 	                	@foreach($posts as $post)

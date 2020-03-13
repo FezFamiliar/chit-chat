@@ -32,3 +32,17 @@
 #post .form-group:last-child{
 	text-align: right;
 }
+
+.media{
+	padding:10px;
+}
+.list-inline{
+	display:flex;
+}
+.list-inline li{
+	padding-right:15px;
+}
+.help-block{
+	display:block;
+	color:red;
+}

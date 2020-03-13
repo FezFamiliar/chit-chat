@@ -14,10 +14,12 @@ class ProfileController extends Controller
 
 
     	$user = User::where('name',$username)->first();
+
     	if($user == null){
     		abort(404);
     	}
-    	return view('profile.user')->with('user',$user);
+        $posts = $user->posts()->notReply()->get();
+    	return view('profile.user')->with('user',$user)->with('posts' , $posts)->with('AuthUserIsFriend' , Auth::user()->isFriendswith($user));
     }
 
 

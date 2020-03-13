@@ -14,4 +14,13 @@ class Post extends Model
 
    		return $this->belongsTo('App\User','user_id');
    }
+
+   public function scopeNotReply($query){
+
+   		return $query->whereNull('parent_id');
+   }
+
+   public function replies(){
+   	return $this->hasMany('App\Post','parent_id');
+   }
 }

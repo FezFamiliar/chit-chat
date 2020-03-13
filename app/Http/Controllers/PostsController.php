@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Auth;
+use App\Post;
 class PostsController extends Controller
 {
     public function Post(Request $request){
@@ -19,5 +20,40 @@ class PostsController extends Controller
 
 
     	return redirect()->route('timeline')->with('info','Status Posted Successfully.');
+    }
+
+    public function postReply(Request $request, $statusID){
+
+    	
+
+    	$this->validate($request,[
+    		"reply-{$statusID}" => 'required|max:2000',
+    	]);
+
+    	//die('second');
+
+    	$find_post = Post::notReply()->find($statusID);
+
+    	if(!$find_post){
+    		die('dddd');
+    		return redirect()->route('timeline')->with('info','that post doesnt exist');
+    	}
+
+    	if(!Auth::user()->isFriendsWith($find_post->user) && Auth::user()->id != $find_post->user->id){
+    		die('fff');
+    		return redirect()->route('timeline')->with('info','you cant do that');
+    	}
+
+
+
+    	$reply = Post::create([
+    		'body' => $request->input("reply-{$statusID}")
+    	])->user()->associate(Auth::user());
+
+
+    	$find_post->replies()->save($reply);
+    	
+
+    	return redirect()->back();
     }
 }

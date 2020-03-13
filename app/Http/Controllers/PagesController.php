@@ -15,7 +15,7 @@ class PagesController extends Controller
     public function RenderTimeline(){
 
 
-    	$posts = Post::where(function($query){
+    	$posts = Post::notReply()->where(function($query){
 
 
     		return $query->where('user_id',Auth::user()->id)->orWhereIn('user_id',Auth::user()->friends()->pluck('id'));
