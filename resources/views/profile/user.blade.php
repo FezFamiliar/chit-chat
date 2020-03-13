@@ -31,7 +31,7 @@
 								<li><a href="">Like</a></li>
 								<li>{{ $post->created_at->diffForHumans() }}</li>
 							</ul>
-					{{-- @if($AuthUserIsFriend) --}}
+					 {{-- @if($AuthUserIsFriend) --}} 
 						@foreach($post->replies as $reply)
 									<div class="media">
 								<a class="pull-left" href="{{ route('user.profile', ['username' => $reply->user->name]) }}"><img class="media-object" src="https://www.gravatar.com/avatar/{{ md5($reply->user->email) }}?d=mm" alt="{{ $reply->user->name }}"></a>
@@ -47,7 +47,7 @@
 									</div>
 								</div>
 							@endforeach
-				{{-- @endif --}}
+				 {{-- @endif  --}}
 				<form action="{{ route('reply.post', ['postid' => $post->id]) }}" method="post">
 					@csrf
 
@@ -66,7 +66,11 @@
 				<hr>
 	        @endforeach
  	        @else
-	               {{ $user->name }} doesn't have any posts yet.
+ 	        		@if(Request::url() == 'http://chitchat.loc/user/' . rawurlencode(Auth::user()->name))
+	              		 you dont have any posts yet.
+	              		@else
+	              		{{ $user->name }} doesn't have any posts yet.
+	               @endif
 	        @endif
 	        @else 
 	        		You and {{ $user->name }} are not friends.
