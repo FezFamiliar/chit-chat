@@ -27,8 +27,8 @@
 		   					<h4 class="media-heading"><a href="{{ route('user.profile', ['username' => $post->user->name]) }}">{{ $post->user->name }}</a></h4>
 									<p>{{ $post->body }}</p>
 							<ul class="list-inline">
-								<li>10 likes</li>
 								<li><a href="">Like</a></li>
+								<li>10 likes</li>
 								<li>{{ $post->created_at->diffForHumans() }}</li>
 							</ul>
 					 {{-- @if($AuthUserIsFriend) --}} 
