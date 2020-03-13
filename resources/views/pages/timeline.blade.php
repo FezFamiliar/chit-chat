@@ -26,7 +26,7 @@
 	                		@include('inc.posts')
 	                	@endforeach
 	                @else
-	                	Theres nothing here, yet
+	                	<p class="text-center">Theres nothing here, yet</p>
 	                @endif
 	                <div class="card-body">
 
