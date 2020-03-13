@@ -30,17 +30,17 @@ class PostsController extends Controller
     		"reply-{$statusID}" => 'required|max:2000',
     	]);
 
-    	//die('second');
+    	
 
     	$find_post = Post::notReply()->find($statusID);
 
     	if(!$find_post){
-    		die('dddd');
+    	
     		return redirect()->route('timeline')->with('info','that post doesnt exist');
     	}
 
     	if(!Auth::user()->isFriendsWith($find_post->user) && Auth::user()->id != $find_post->user->id){
-    		die('fff');
+    
     		return redirect()->route('timeline')->with('info','you cant do that');
     	}
 

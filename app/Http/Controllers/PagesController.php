@@ -23,14 +23,6 @@ class PagesController extends Controller
 
 			})->orderBy('created_at','desc')->get();
 
-    	// i dont want oaginate later do not forget to cancel it
-    	
-
-    	// echo '<pre>';
-    	// echo count($posts);
-    	// print_r($posts);
-    	// echo '</pre>';
-    	// die();
     	return view('pages.timeline')->with('posts',$posts);
     }
 

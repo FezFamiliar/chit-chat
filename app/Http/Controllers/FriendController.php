@@ -39,11 +39,12 @@ class FriendController extends Controller
 
     	if(Auth::user()->hasFriendReqPending($user) || $user->hasFriendReqPending(Auth::user())){  // cant add friend twice
 
-    			return redirect()->route('user.profile',['username' => $user->name])->with('info','Friend request already pending.');
+    		return redirect()->route('user.profile',['username' => $user->name])->with('info','Friend request already pending.');
     	}
 
 
     	if(Auth::user()->isFriendsWith($user)){ // you guys are already buddies, you cant add him twice.
+
     		return redirect()->route('user.profile',['username' => $user->name])->with('info','You are already friends.');
     	}
 
@@ -64,6 +65,7 @@ class FriendController extends Controller
         }
 
         if(Auth::user()->isFriendsWith($user)){ // you guys are already buddies, you cant accept him twice.
+
             return redirect()->route('user.profile',['username' => $user->name])->with('info','You are already friends.');
         }
         
@@ -102,6 +104,7 @@ class FriendController extends Controller
         }
 
         if(Auth::user()->isFriendsWith($user)){ 
+
             return redirect()->route('user.profile',['username' => $user->name])->with('info','You are already friends.');
         }
 
@@ -114,7 +117,6 @@ class FriendController extends Controller
 
         if(!Auth::user()->hasFriendReqReceived($user)){
 
-        
             return redirect()->route('timeline')->with('info','You didn\'t receive a friend request from that user.');
         }
 
@@ -143,6 +145,7 @@ class FriendController extends Controller
 
 
         if(!Auth::user()->isFriendsWith($user)){
+            
             return redirect()->route('user.profile',['username' => $user->name])->with('info','You are not friends.');
         }
     
