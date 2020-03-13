@@ -17,8 +17,8 @@
 					<a href="{{ route('add.as.friend',['username' => $user->name]) }}" class="btn btn-primary float-right">Add as friend</a>
 			@endif
 			@include('inc.userblock')
-			<hr>	
-			<h3>{{ $user->name }}'s posts</h3>
+			<hr>
+			@if(Auth::user()->isFriendsWith($user) || Request::url() == 'http://chitchat.loc/user/' . rawurlencode(Auth::user()->name))				
 		 	 @if($posts->count() > 0)
 	            @foreach($posts as $post)
 		            <div class="media">
@@ -65,9 +65,12 @@
 				</div>
 				<hr>
 	        @endforeach
-	        @else
-	               {{ $user->name }} don't have any posts yet.
-	        @endif 
+ 	        @else
+	               {{ $user->name }} doesn't have any posts yet.
+	        @endif
+	        @else 
+	        		You and {{ $user->name }} are not friends.
+	        @endif  
 		</div>
 		<div class="offset-lg-2 col-lg-5">
 
