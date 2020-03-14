@@ -21,10 +21,14 @@ class Post extends Model
    }
 
    public function replies(){
-   	return $this->hasMany('App\Post','parent_id');
+
+    	return $this->hasMany('App\Post','parent_id');
+
    }
 
    public function likes(){
-    return $this->morphMany('App\Like','like');
+
+      return $this->morphMany('App\Like','like');
+      
    }
 }

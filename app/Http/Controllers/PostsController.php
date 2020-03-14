@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Auth;
 use App\Post;
+use Illuminate\Support\Facades\DB;
+use App\User;
 class PostsController extends Controller
 {
     public function Post(Request $request){
@@ -72,7 +74,7 @@ class PostsController extends Controller
             return redirect()->route('timeline')->with('info','You are not friends with that user.');
 
         }
-
+        // SELECT user_id FROM `likes` WHERE like_id = post_id 
         if(Auth::user()->hasLikedPost($post)){
 
             return redirect()->route('timeline')->with('info','You already liked that post.');
@@ -88,5 +90,21 @@ class PostsController extends Controller
 
 
 
+    }
+
+
+    public function showLikes($statusID){
+
+       
+       
+       $get_like_user_id = DB::select("SELECT user_id FROM `likes` WHERE like_id = {$statusID}");
+      
+       for($i = 0;$i < count($get_like_user_id);$i++){
+       
+            $get_users[] =  DB::select("SELECT name FROM `users` WHERE id = {$get_like_user_id[$i]->user_id}")[0]->name;
+       }
+
+
+        return response()->json(['success'=> $get_users]);
     }
 }

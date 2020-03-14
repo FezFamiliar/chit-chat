@@ -107,8 +107,14 @@ class User extends Authenticatable
     }
 
     public function hasLikedPost(Post $post){
-      //  die('fff');
+    
         return (bool)$post->likes()->where('like_id',$post->id)->where('like_type',get_class($post))->where('user_id',$this->id)->count();
+    }
+
+
+    public function getUsersLiking(Post $post){
+
+        return $post->likes()->where('like_id',$post->id)->where('like_type',get_class($post))->where('user_id',$this->id)->get();
     }
 
 }

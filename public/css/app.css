@@ -46,3 +46,6 @@
 	display:block;
 	color:red;
 }
+.like-peek{
+	cursor:pointer;
+}

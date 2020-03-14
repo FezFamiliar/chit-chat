@@ -87,3 +87,10 @@ Route::get('/post/like/{postid}', [
 	'uses' => 'PostsController@getLike'
 
 ]);
+
+
+Route::get('/show/likes/{postid}', [
+	'as' => 'show.likes.post',
+	'uses' => 'PostsController@showLikes'
+
+]);
