@@ -34,8 +34,8 @@ class ProfileController extends Controller
 
     	$this->validate($request,[
 
-    		'name' => 'max:50',
-    		'location' => 'max:35'
+    		'name' => 'required|max:50',
+    		'location' => 'required|max:35'
 
     	]);
     	$name = $request->input('name');
