@@ -7,7 +7,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Contracts\Auth;
 use Illuminate\Database\Eloquent\Model;
-
+use App\Post;
 class User extends Authenticatable
 {
     use Notifiable;
@@ -101,5 +101,14 @@ class User extends Authenticatable
         return (bool) $this->friends()->where('id',$user->id)->count();
     }
 
+    public function likes(){
+
+        return $this->hasMany('App\Like','user_id');
+    }
+
+    public function hasLikedPost(Post $post){
+      //  die('fff');
+        return (bool)$post->likes()->where('like_id',$post->id)->where('like_type',get_class($post))->where('user_id',$this->id)->count();
+    }
 
 }

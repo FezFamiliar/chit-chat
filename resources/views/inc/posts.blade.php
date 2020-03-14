@@ -4,8 +4,8 @@
 	<h4 class="media-heading"><a href="{{ route('user.profile', ['username' => $post->user->name]) }}">{{ $post->user->name }}</a></h4>
 	<p>{{ $post->body }}</p>
 	<ul class="list-inline">
-		<li><a href="">Like</a></li>
-		<li>10 likes</li>
+		<li><a href="{{ route('like.post', ['postid' => $post->id]) }}">Like</a></li>
+		<li>{{ $post->likes()->count() }} &nbsp;{{ str_plural('Like', $post->likes()->count()) }}</li>
 		<li>{{ $post->created_at->diffForHumans() }}</li>
 	</ul>
 	@foreach($post->replies as $reply)
@@ -16,8 +16,8 @@
 				<h4 class="media-heading"><a href="{{ route('user.profile', ['username' => $reply->user->name]) }}">{{ $reply->user->name }}</a></h4>
 				<p>{{ $reply->body }}</p>
 				<ul class="list-inline">
-					<li><a href="">Like</a></li>
-					<li>10 likes</li>
+					<li><a href="{{ route('like.post', ['postid' => $reply->id]) }}">Like</a></li>
+					<li>{{ $reply->likes->count() }} &nbsp;{{ str_plural('Like', $reply->likes()->count()) }}</li>
 					<li>{{ $reply->created_at->diffForHumans() }}</li>
 				</ul>
 			</div>

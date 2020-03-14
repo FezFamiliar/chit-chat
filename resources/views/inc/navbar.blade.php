@@ -53,8 +53,8 @@
 
                           <a class="dropdown-item" href="{{ route('user.profile', ['username' => Auth::user()->name]) }}">Profile</a>
                           <a class="dropdown-item" href="{{ route('profile.edit') }}">Update Profile</a>
-                          <hr>
                           <a class="dropdown-item" href="{{ url('/settings') }}">Settings</a>
+                          <hr>
                           <a class="dropdown-item" href="{{ route('logout') }}"
                              onclick="event.preventDefault();
                                            document.getElementById('logout-form').submit();">

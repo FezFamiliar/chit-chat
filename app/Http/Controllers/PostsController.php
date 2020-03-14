@@ -56,4 +56,37 @@ class PostsController extends Controller
 
     	return redirect()->back();
     }
+
+    public function getLike($statusID){
+
+        $post = Post::find($statusID);
+
+        if(!$post){
+        
+            return redirect()->route('timeline')->with('info','that post doesnt exist.');
+        }
+
+
+        if(!Auth::user()->isFriendsWith($post->user) && $post->user != Auth::user()){
+
+            return redirect()->route('timeline')->with('info','You are not friends with that user.');
+
+        }
+
+        if(Auth::user()->hasLikedPost($post)){
+
+            return redirect()->route('timeline')->with('info','You already liked that post.');
+        }
+
+
+        $like = $post->likes()->create([]);
+
+        //die($like);
+        Auth::user()->likes()->save($like);
+
+        return redirect()->back();
+
+
+
+    }
 }

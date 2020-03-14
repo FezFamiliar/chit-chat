@@ -80,3 +80,10 @@ Route::post('/reply/{postid}', [
 	'uses' => 'PostsController@postReply'
 
 ]);
+
+
+Route::get('/post/like/{postid}', [
+	'as' => 'like.post',
+	'uses' => 'PostsController@getLike'
+
+]);
