@@ -6,8 +6,12 @@
 			<div class="col-md-12">
 				<div class="mb-5"><h2>Update Your Profile</h2></div>
 				@include('inc.flash')
-				<form method="POST" action="{{ route('profile.edit') }}" autocomplete="off">
+				<form method="POST" action="{{ route('profile.edit') }}" autocomplete="off" enctype="multipart/form-data">
 					@csrf
+					<div class="form-group">
+						<img class="media-object" src="https://www.gravatar.com/avatar/{{ md5(Auth::user()->email) }}?d=mm" alt="{{ Auth::user()->name }}">
+						<input type="file" name="profile-pic">
+					</div>
 					<div class="form-group"> 
 						@if ($errors->has('name'))
 						    <div class="alert alert-danger">
