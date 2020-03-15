@@ -49,3 +49,6 @@
 .like-peek{
 	cursor:pointer;
 }
+.avatar-profile{
+	border-radius:50%;
+}

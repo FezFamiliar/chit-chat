@@ -28,7 +28,7 @@
 									@if(is_null($post->user->profile))
 										<img class="media-object" src="https://www.gravatar.com/avatar/ {{ md5( $post->user->emai) }}?d=mm" alt="placeholder">
 									@else
-										<img class="media-object" src="{{ asset('img\\') . $post->user->profile }}" alt="placeholder">
+										<img class="media-object" src="{{ asset('img') . $post->user->profile }}" alt="placeholder">
 									@endif
 
 		     				</a>
@@ -47,7 +47,7 @@
 									@if(is_null($reply->user->profile))
 										<img class="media-object" src="https://www.gravatar.com/avatar/ {{ md5( $reply->user->emai) }}?d=mm" alt="placeholder">
 									@else
-										<img class="media-object" src="{{ asset('img\\') . $reply->user->profile }}" alt="placeholder">
+										<img class="media-object" src="{{ asset('img') . $reply->user->profile }}" alt="placeholder">
 									@endif
 
 								</a>

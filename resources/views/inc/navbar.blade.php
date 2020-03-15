@@ -44,7 +44,19 @@
                       </li>
                   @endif
               @else
+
+                  <li class="nav-item">
+                    <a class="nav-link" href="{{ route('user.profile', ['username' => Auth::user()->name]) }}">
+                        @if(is_null(Auth::user()->profile))
+                              <img  class="avatar-profile" src="https://www.gravatar.com/avatar/ {{ md5(Auth::user()->email) }}?d=mm" width="20" height="20">
+                        @else
+                              <img src="{{ asset('img/avatar/') . Auth::user()->profile }}" class="avatar-profile">
+                        @endif
+                    
+                    </a>
+                  </li>
                   <li class="nav-item dropdown">
+
                       <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                           {{ Auth::user()->name }} <span class="caret"></span>
                       </a>
