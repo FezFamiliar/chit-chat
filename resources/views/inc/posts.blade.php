@@ -5,7 +5,7 @@
 	<p>{{ $post->body }}</p>
 	<ul class="list-inline">
 		<li><a href="{{ route('like.post', ['postid' => $post->id]) }}">Like</a></li>
-		<li><span class="like-peek"  {{-- data-toggle="modal" data-target="#myModal" --}}  data-attribute={{$post->id}}>{{ $post->likes()->count() }} &nbsp;{{ str_plural('Like', $post->likes()->count()) }}</span></li>
+		<li><span class="like-peek" data-attribute={{$post->id}}>{{ $post->likes()->count() }}</span> &nbsp;{{ str_plural('Like', $post->likes()->count()) }}</li>
 		<li>{{ $post->created_at->diffForHumans() }}</li>
 	</ul> 
 	@include('inc.modal')
@@ -42,29 +42,3 @@
 </div>
 </div>
 <hr>
-<script type="text/javascript">
-$( document ).ready(function() {
-	$("#myModal").on("hidden.bs.modal", function(){
-	    $("#myModal .modal-body").html("");
-	});
-	$('.like-peek').click(function(e){
-		// e.preventDefault()
-		var id = $(this).attr('data-attribute');
-
-		   $.ajax({
-            type: "GET",
-            url: "/show/likes/" + id,
-            success: function (data) {
-            	var n = data['success']['length'];
-
-
-            	for(var i = 0;i < n;i++){
-
-             	   $("#myModal .modal-body").append(data['success'][i] + '<br>');
-            	}
-                $("#myModal").modal("show");
-            }
-     });
-  }); 
-});
-</script>

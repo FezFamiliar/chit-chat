@@ -4,6 +4,7 @@
 <div class="container">
 	@include('inc.flash')
 	<div class="row">
+		@include('inc.modal')
 		<div class="col-lg-5">
 			@if(Auth::user()->hasFriendReqPending($user)) 
 				<p>	Waiting for {{ $user->name }} to accept your friend request.</p>
@@ -28,7 +29,7 @@
 									<p>{{ $post->body }}</p>
 							<ul class="list-inline">
 								<li><a href="{{ route('like.post',['postid' => $post->id]) }}">Like</a></li>
-								<li>{{ $post->likes->count() }} &nbsp;{{ str_plural('Like', $post->likes()->count()) }}</li>
+								<li><span class="like-peek" data-attribute={{$post->id}}>{{ $post->likes->count() }}</span> &nbsp;{{ str_plural('Like', $post->likes()->count()) }}</li>
 								<li>{{ $post->created_at->diffForHumans() }}</li>
 							</ul>
 					 {{-- @if($AuthUserIsFriend) --}} 
@@ -41,7 +42,7 @@
 									<p>{{ $reply->body }}</p>
 										<ul class="list-inline">
 											<li><a href="{{ route('like.post',['postid' => $reply->id]) }}">Like</a></li>
-											<li>{{ $reply->likes->count() }} &nbsp;{{ str_plural('Like', $reply->likes()->count()) }}</li>
+											<li><span class="like-peek" data-attribute={{$reply->id}}>{{ $reply->likes->count() }}</span> &nbsp;{{ str_plural('Like', $reply->likes()->count()) }}</li>
 											<li>{{ $reply->created_at->diffForHumans() }}</li>
 										</ul>
 									</div>
