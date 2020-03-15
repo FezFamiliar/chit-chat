@@ -9,7 +9,7 @@
 				<form method="POST" action="{{ route('profile.edit') }}" autocomplete="off" enctype="multipart/form-data">
 					@csrf
 					<div class="form-group">
-						<img class="media-object" src="https://www.gravatar.com/avatar/{{ md5(Auth::user()->email) }}?d=mm" alt="{{ Auth::user()->name }}">
+						<img class="media-object" src="{{ asset('img\\') . Auth::user()->profile}}" alt="placeholder" height="80" width="80">
 						<input type="file" name="profile-pic">
 					</div>
 					<div class="form-group"> 

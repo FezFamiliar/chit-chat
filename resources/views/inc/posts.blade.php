@@ -1,5 +1,11 @@
 <div class="media">
-<a class="pull-left" href="{{ route('user.profile', ['username' => $post->user->name]) }}"><img class="media-object" src="https://www.gravatar.com/avatar/{{ md5($post->user->email) }}?d=mm" alt="{{ $post->user->name }}"></a>
+<a class="pull-left" href="{{ route('user.profile', ['username' => $post->user->name]) }}">
+		@if(!is_null($post->user->profile))
+			<img src="{{ asset('img\\') . $post->user->profile}}" alt="palceholder" class="media-object" width="80" height="80">
+		@else
+			<img src="https://www.gravatar.com/avatar/{{ md5($post->user->email) }}?d=mm" alt="palceholder" class="media-object">
+		@endif
+	</a>
 <div class="media-body">
 	<h4 class="media-heading"><a href="{{ route('user.profile', ['username' => $post->user->name]) }}">{{ $post->user->name }}</a></h4>
 	<p>{{ $post->body }}</p>
@@ -12,8 +18,14 @@
 
 	@foreach($post->replies as $reply)
 		<div class="media">
-			<a class="pull-left" href="{{ route('user.profile', ['username' => $reply->user->name]) }}"><img class="media-object" src="https://www.gravatar.com/avatar/{{ md5($reply->user->email) }}?d=mm" alt="{{ $reply->user->name }}"></a>
+			<a class="pull-left" href="{{ route('user.profile', ['username' => $reply->user->name]) }}">
 
+			@if(!is_null($reply->user->profile))
+				<img src="{{ asset('img\\') . $reply->user->profile}}" alt="palceholder" class="media-object" width="80" height="80">
+			@else
+				<img src="https://www.gravatar.com/avatar/{{ md5($reply->user->email) }}?d=mm" alt="palceholder" class="media-object">
+			@endif
+			</a>
 			<div class="media-body">
 				<h4 class="media-heading"><a href="{{ route('user.profile', ['username' => $reply->user->name]) }}">{{ $reply->user->name }}</a></h4>
 				<p>{{ $reply->body }}</p>

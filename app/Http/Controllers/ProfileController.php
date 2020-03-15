@@ -45,7 +45,7 @@ class ProfileController extends Controller
         $dir = public_path() . '\img\\';
         $target_file = $dir . basename($_FILES['profile-pic']['name']);
 
-
+        echo $_FILES['profile-pic']['name'];
         if(file_exists($target_file)){  
             return redirect()->route('profile.edit')->with('info','The file already exists!');
         }
@@ -56,13 +56,13 @@ class ProfileController extends Controller
 
 
         move_uploaded_file($_FILES['profile-pic']['tmp_name'], $target_file);
-        die();
+        //die();
     
 
     	Auth::user()->update([
     		'name' => $request->input('name'),
-    		'location' => $request->input('location')
-
+    		'location' => $request->input('location'),
+            'profile' => $_FILES['profile-pic']['name']
 
     	]);
 
