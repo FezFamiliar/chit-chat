@@ -23,7 +23,15 @@
 		 	 @if($posts->count() > 0)
 	            @foreach($posts as $post)
 		            <div class="media">
-		     				<a class="pull-left" href="{{ route('user.profile', ['username' => $post->user->name]) }}"><img class="media-object" src="https://www.gravatar.com/avatar/{{ md5($post->user->email) }}?d=mm" alt="{{ $post->user->name }}"></a>
+		     				<a class="pull-left" href="{{ route('user.profile', ['username' => $post->user->name]) }}">
+
+									@if(is_null($post->user->profile))
+										<img class="media-object" src="https://www.gravatar.com/avatar/ {{ md5( $post->user->emai) }}?d=mm" alt="placeholder">
+									@else
+										<img class="media-object" src="{{ asset('img\\') . $post->user->profile }}" alt="placeholder">
+									@endif
+
+		     				</a>
 						<div class="media-body">
 		   					<h4 class="media-heading"><a href="{{ route('user.profile', ['username' => $post->user->name]) }}">{{ $post->user->name }}</a></h4>
 									<p>{{ $post->body }}</p>
@@ -35,7 +43,14 @@
 					 {{-- @if($AuthUserIsFriend) --}} 
 						@foreach($post->replies as $reply)
 									<div class="media">
-								<a class="pull-left" href="{{ route('user.profile', ['username' => $reply->user->name]) }}"><img class="media-object" src="https://www.gravatar.com/avatar/{{ md5($reply->user->email) }}?d=mm" alt="{{ $reply->user->name }}"></a>
+								<a class="pull-left" href="{{ route('user.profile', ['username' => $reply->user->name]) }}">
+									@if(is_null($reply->user->profile))
+										<img class="media-object" src="https://www.gravatar.com/avatar/ {{ md5( $reply->user->emai) }}?d=mm" alt="placeholder">
+									@else
+										<img class="media-object" src="{{ asset('img\\') . $reply->user->profile }}" alt="placeholder">
+									@endif
+
+								</a>
 
 								<div class="media-body">
 									<h4 class="media-heading"><a href="{{ route('user.profile', ['username' => $reply->user->name]) }}">{{ $reply->user->name }}</a></h4>

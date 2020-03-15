@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 //use Illuminate\Foundation\Auth\User;
 use Illuminate\Support\Facades\Auth;
 use App\User;
+use Image;
 
 class ProfileController extends Controller
 {
@@ -45,19 +46,17 @@ class ProfileController extends Controller
         $dir = public_path() . '\img\\';
         $target_file = $dir . basename($_FILES['profile-pic']['name']);
 
-        echo $_FILES['profile-pic']['name'];
+        
         if(file_exists($target_file)){  
             return redirect()->route('profile.edit')->with('info','The file already exists!');
         }
         
-
-
-
-
-
         move_uploaded_file($_FILES['profile-pic']['tmp_name'], $target_file);
-        //die();
-    
+        
+
+        Image::make($target_file)->fit(80, 80)->save($target_file)->destroy();
+        
+
 
     	Auth::user()->update([
     		'name' => $request->input('name'),
