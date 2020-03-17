@@ -8,7 +8,15 @@
 	</a>
 <div class="media-body">
 	<h4 class="media-heading"><a href="{{ route('user.profile', ['username' => $post->user->name]) }}">{{ $post->user->name }}</a></h4>
-	<p>{{ $post->body }}</p>
+	<script type="text/javascript">
+		
+	</script>
+	@if(strpos($post->body, 'http') === 0)
+		<a href="{{ $post->body }}">{{ $post->body }}</a>
+	@else
+		<p>{{ $post->body }}</p>
+	@endif
+	
 	<ul class="list-inline">
 		<li><a href="{{ route('like.post', ['postid' => $post->id]) }}">Like</a></li>
 		<li><span class="like-peek" data-attribute={{$post->id}}>{{ $post->likes()->count() }}</span> &nbsp;{{ str_plural('Like', $post->likes()->count()) }}</li>

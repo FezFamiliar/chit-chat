@@ -9,12 +9,15 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     <link rel="stylesheet"    href="{{ asset('css/app.css') }}" >
+    <link rel="stylesheet"    href="{{ asset('css/basic.css') }}" >
+    <link rel="stylesheet"    href="{{ asset('css/dropzone.css') }}" >
     <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
     <script
   src="https://code.jquery.com/jquery-3.4.1.min.js"
   integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
   crossorigin="anonymous"></script>
   <script src="{{ asset('js/show-likes.js') }}" defer></script>
+  <script src="{{ asset('js/dropzone.js') }}" defer></script>
 </head>
 <body>
     <div id="app">
