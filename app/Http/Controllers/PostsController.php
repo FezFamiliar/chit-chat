@@ -15,11 +15,9 @@ class PostsController extends Controller
     		'post-body' => 'required|max:2000',
     	]);
 
-    	Auth::user()->posts()->create([
+    	Auth::user()->posts()->create([ 
     		'body' => $request->input('post-body'),
     	]);
-
-
 
     	return redirect()->route('timeline')->with('info','Status Posted Successfully.');
     }

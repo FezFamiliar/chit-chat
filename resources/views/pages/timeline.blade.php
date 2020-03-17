@@ -2,9 +2,9 @@
 
 @section('content')
 	<div class="container">
-		@include('inc.flash')
 	    <div class="row justify-content-center">
 	        <div class="col-md-8">
+	        	@include('inc.flash')
 	        		<form method="POST" action="{{ route('post.it') }}" id="post">
 	        			@csrf
 	        			@if($errors->has('post-body'))
