@@ -36,7 +36,14 @@
 			</a>
 			<div class="media-body">
 				<h4 class="media-heading"><a href="{{ route('user.profile', ['username' => $reply->user->name]) }}">{{ $reply->user->name }}</a></h4>
-				<p>{{ $reply->body }}</p>
+					@if(strpos($reply->body, 'http') === 0)
+						<a href="{{ $reply->body }}">{{ $reply->body }}</a>
+					@elseif(strpos($reply->body, 'http') > 0)
+						<p>{{ substr($reply->body,0,strpos($reply->body, 'http')) }}
+						<a href="{{ substr($reply->body,strpos($reply->body, 'http')) }}">{{ substr($reply->body,strpos($reply->body, 'http')) }}</a></p>
+					@else
+						<p>{{ $reply->body }}</p>
+					@endif
 				<ul class="list-inline">
 					<li><a href="{{ route('like.post', ['postid' => $reply->id]) }}">Like</a></li>
 					<li><span class="like-peek"  data-attribute={{$reply->id}}>{{ $reply->likes()->count() }}</span> &nbsp;{{ str_plural('Like', $reply->likes()->count()) }}</li>
