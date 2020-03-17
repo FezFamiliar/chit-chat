@@ -4,12 +4,10 @@
     <!-- Modal content-->
     <div class="modal-content">
       <div class="modal-header">
+        <h4 class="modal-title">People who liked this post</h4> 
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-      {{--   <h4 class="modal-title">Modal Header</h4> --}}
       </div>
       <div class="modal-body">
-        <h4>People who liked this post:</h4>
-        <br>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
