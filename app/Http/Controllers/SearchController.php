@@ -11,7 +11,7 @@ class SearchController extends Controller
     	$query = $request->input('query');
     	if(!$query){
 
-			return redirect()->route('/');
+			return redirect()->route('timeline');
 			
 		}
 

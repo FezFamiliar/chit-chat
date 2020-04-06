@@ -42,13 +42,13 @@ class User extends Authenticatable
 
    
 
-    public function friendsOfMine(){
-
-
+    public function friendsOfMine()
+    {
         return $this->belongsToMany('App\User','friends','user_id','friend_id');
     }
 
-    public function friendOf(){
+    public function friendOf()
+    {
         return $this->belongsToMany('App\User','friends','friend_id','user_id');
     }
 
@@ -58,62 +58,62 @@ class User extends Authenticatable
         return $this->friendsOfMine()->wherePivot('accepted','1')->get()->merge($this->friendOf()->wherePivot('accepted','1')->get());  
     }
 
-    public function getFriendReq(){
-
+    public function getFriendReq()
+    {
         return $this->friendsOfMine()->wherePivot('accepted','0')->get();
     }
 
 
-    public function posts(){
-
+    public function posts()
+    {
         return $this->hasMany('App\Post','user_id');
     }
-    public function getFriendReqPending(){
 
+    public function getFriendReqPending()
+    {
         return $this->friendOf()->wherePivot('accepted','0')->get();
     }
 
 
-    public function hasFriendReqPending(User $user){
-
+    public function hasFriendReqPending(User $user)
+    {
         return (bool)$this->getFriendReqPending()->where('id',$user->id)->count();
     }
 
 
-    public function hasFriendReqReceived(User $user){
-            
+    public function hasFriendReqReceived(User $user)
+    {
         return (bool)$this->getFriendReq()->where('id',$user->id)->count();
     }
 
-    public function addFriend(User $user){
-
+    public function addFriend(User $user)
+    {
          $this->friendOf()->attach($user->id, ['accepted' => '0','created_at' => NOW(), 'updated_at' => NOW()]);
-
     }
 
-    public function acceptFriendReq(User $user){
-
+    public function acceptFriendReq(User $user)
+    {
         $this->getFriendReq()->where('id',$user->id)->first()->pivot->update(['accepted' => '1','updated_at' => NOW()]);
     }
 
-    public function isFriendsWith(User $user){
-
+    public function isFriendsWith(User $user)
+    {
         return (bool) $this->friends()->where('id',$user->id)->count();
     }
 
-    public function likes(){
-
+    public function likes()
+    {
         return $this->hasMany('App\Like','user_id');
     }
 
-    public function hasLikedPost(Post $post){
-    
+    public function hasLikedPost(Post $post)
+    {
         return (bool)$post->likes()->where('like_id',$post->id)->where('like_type',get_class($post))->where('user_id',$this->id)->count();
     }
 
 
-    public function getUsersLiking(Post $post){
-
+    public function getUsersLiking(Post $post)
+    {
         return $post->likes()->where('like_id',$post->id)->where('like_type',get_class($post))->where('user_id',$this->id)->get();
     }
 

@@ -57,31 +57,31 @@ class PostsController extends Controller
     	return redirect()->back();
     }
 
+
+
     public function getLike($statusID){
 
         $post = Post::find($statusID);
 
-        if(!$post){
-        
+        if(!$post)
+        {
             return redirect()->route('timeline')->with('info','that post doesnt exist.');
         }
 
-
-        if(!Auth::user()->isFriendsWith($post->user) && $post->user != Auth::user()){
-
+        if(!Auth::user()->isFriendsWith($post->user) && $post->user != Auth::user())
+        {
             return redirect()->route('timeline')->with('info','You are not friends with that user.');
-
         }
         // SELECT user_id FROM `likes` WHERE like_id = post_id 
-        if(Auth::user()->hasLikedPost($post)){
-
+        if(Auth::user()->hasLikedPost($post))
+        {
             return redirect()->route('timeline')->with('info','You already liked that post.');
         }
 
 
         $like = $post->likes()->create([]);
 
-        //die($like);
+
         Auth::user()->likes()->save($like);
 
         return redirect()->back();
@@ -94,14 +94,12 @@ class PostsController extends Controller
     public function showLikes($statusID){
 
        
-       
        $get_like_user_id = DB::select("SELECT user_id FROM `likes` WHERE like_id = {$statusID}");
       
-       for($i = 0;$i < count($get_like_user_id);$i++){
-       
+       for($i = 0;$i < count($get_like_user_id);$i++)
+       {
             $get_users[] =  DB::select("SELECT name FROM `users` WHERE id = {$get_like_user_id[$i]->user_id}")[0]->name;
        }
-
 
         return response()->json(['success'=> $get_users]);
     }
