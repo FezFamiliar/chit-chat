@@ -29,6 +29,11 @@ class ProfileController extends Controller
     	return view('profile.edit');
     }
 
+    public function getExtension($filename)
+    {
+        return pathinfo($filename, PATHINFO_EXTENSION);
+    }
+
     public function postEdit(Request $request){
 
 
@@ -42,9 +47,20 @@ class ProfileController extends Controller
     	$name = $request->input('name');
     	$location = $request->input('location');
 
-
+        $valid = ['jpg','jpeg','png'];
 
         if(!empty($_FILES['profile-pic']['name'])){
+
+
+            if(strpos($_FILES['profile-pic']['name'],'%2f') !== false || strpos($_FILES['profile-pic']['name'],'%5C') !== false )
+            {
+                return redirect()->route('profile.edit')->with('info','You cant upload a file with that name');
+            }
+            else if(!in_array($this->getExtension($_FILES['profile-pic']['name']),$valid))
+            {
+                return redirect()->route('profile.edit')->with('info','That file type is illegal!');
+            }
+            
             $dir = public_path() . '\img\\';
             $av_dir = public_path() . '\img\avatar\\';
 
