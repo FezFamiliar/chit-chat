@@ -7,12 +7,15 @@
 		@endif
 	</a>
 <div class="media-body">
-	<a id="PostAction" class="post_action" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre></a>
 
-	<div class="dropdown-menu dropdown-menu-right" aria-labelledby="PostAction">
-		<a href="" class="dropdown-item">Edit</a>
-		<a href="{{ route('delete.post', ['postid' => $post->id]) }}" class="dropdown-item">Delete</a>
-	</div>
+	@if($post->user_id == Auth::user()->id)
+		<a id="PostAction" class="post_action" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre></a>
+
+		<div class="dropdown-menu dropdown-menu-right" aria-labelledby="PostAction">
+			<a href="" class="dropdown-item">Edit</a>
+			<a href="{{ route('delete.post', ['postid' => $post->id]) }}" class="dropdown-item">Delete</a>
+		</div>
+	@endif
 	<h4 class="media-heading"><a href="{{ route('user.profile', ['username' => $post->user->name]) }}">{{ $post->user->name }}</a></h4>
 	@if(strpos($post->body, 'http') === 0)
 		<a href="{{ $post->body }}">{{ $post->body }}</a>
@@ -41,6 +44,14 @@
 			@endif
 			</a>
 			<div class="media-body">
+				@if($reply->user_id == Auth::user()->id)
+					<a id="PostAction" class="post_action" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre></a>
+
+					<div class="dropdown-menu dropdown-menu-right" aria-labelledby="PostAction">
+						<a href="" class="dropdown-item">Edit</a>
+						<a href="{{ route('delete.post', ['postid' => $reply->id]) }}" class="dropdown-item">Delete</a>
+					</div>
+				@endif
 				<h4 class="media-heading"><a href="{{ route('user.profile', ['username' => $reply->user->name]) }}">{{ $reply->user->name }}</a></h4>
 					@if(strpos($reply->body, 'http') === 0)
 						<a href="{{ $reply->body }}">{{ $reply->body }}</a>
