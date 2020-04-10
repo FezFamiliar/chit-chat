@@ -11,86 +11,86 @@
 |
 */
 
-Route::get('/', 'PagesController@RenderHomePage');
+Route::get('/', 'PagesController@RenderHomePage')->middleware('guest');
 Auth::routes();
 Route::get('/timeline', [
 
 		'as' => 'timeline',
 		'uses' => 'PagesController@RenderTimeline'
-]);
+])->middleware('auth');
 Route::get('/search', [
 	'as' => 'search.results',
 	'uses' => 'SearchController@getResults'
 
-]);
-Route::get('/profile', 'PagesController@RenderProfile');
+])->middleware('auth');
+Route::get('/profile', 'PagesController@RenderProfile')->middleware('auth');
 Route::get('/user/{username}', [
 	'as' => 'user.profile',
 	'uses' => 'ProfileController@getProfile'
 
-]);
+])->middleware('auth');
 
 Route::get('/profile/edit', [
 	'as' => 'profile.edit',
 	'uses' => 'ProfileController@getEdit'
 
-]);
+])->middleware('auth');
 
 Route::post('/profile/edit', [
 	'uses' => 'ProfileController@postEdit'
 
-]);
-Route::get('/friends','FriendController@getFriends');
+])->middleware('auth');
+Route::get('/friends','FriendController@getFriends')->middleware('auth');
 
 Route::get('/friends/add/{username}', [
 	'as' => 'add.as.friend',
 	'uses' => 'FriendController@Add'
 
-]);
+])->middleware('auth');
 
 
 Route::get('/friends/accept/{username}', [
 	'as' => 'accepted.friend',
 	'uses' => 'FriendController@Accept'
 
-]);
+])->middleware('auth');
 
 Route::get('/friends/ignore/{username}', [
 	'as' => 'ignore.friend',
 	'uses' => 'FriendController@Ignore'
 
-]);
+])->middleware('auth');
 
 
 Route::get('/friends/unfriend/{username}', [
 	'as' => 'unfriend.friend',
 	'uses' => 'FriendController@Unfriend'
 
-]);
+])->middleware('auth');
 
 
 Route::post('/post', [
 	'as' => 'post.it',
 	'uses' => 'PostsController@Post'
 
-]);
+])->middleware('auth');
 
 Route::post('/reply/{postid}', [
 	'as' => 'reply.post',
 	'uses' => 'PostsController@postReply'
 
-]);
+])->middleware('auth');
 
 
 Route::get('/post/like/{postid}', [
 	'as' => 'like.post',
 	'uses' => 'PostsController@getLike'
 
-]);
+])->middleware('auth');
 
 
 Route::get('/show/likes/{postid}', [
 	'as' => 'show.likes.post',
 	'uses' => 'PostsController@showLikes'
 
-]);
+])->middleware('auth');
