@@ -55,5 +55,11 @@
 
 .post_action{
 	float:right;
-	background-image:url("../");
+	background-image:url("../img/misc/icons.png");
+	background-repeat:no-repeat;
+	background-size:auto;
+	background-position:-25px -71px;
+	height:20px;
+	width:20px;
+	margin-top:10px;
 }

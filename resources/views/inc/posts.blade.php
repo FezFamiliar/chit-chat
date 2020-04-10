@@ -7,7 +7,12 @@
 		@endif
 	</a>
 <div class="media-body">
-	<a id="PostAction" class="post_action" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>fff</a>
+	<a id="PostAction" class="post_action" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre></a>
+
+	<div class="dropdown-menu dropdown-menu-right" aria-labelledby="PostAction">
+		<a href="" class="dropdown-item">Edit</a>
+		<a href="" class="dropdown-item">Delete</a>
+	</div>
 	<h4 class="media-heading"><a href="{{ route('user.profile', ['username' => $post->user->name]) }}">{{ $post->user->name }}</a></h4>
 	@if(strpos($post->body, 'http') === 0)
 		<a href="{{ $post->body }}">{{ $post->body }}</a>
