@@ -7,6 +7,7 @@
 		@endif
 	</a>
 <div class="media-body">
+	<a id="PostAction" class="post_action" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>fff</a>
 	<h4 class="media-heading"><a href="{{ route('user.profile', ['username' => $post->user->name]) }}">{{ $post->user->name }}</a></h4>
 	@if(strpos($post->body, 'http') === 0)
 		<a href="{{ $post->body }}">{{ $post->body }}</a>

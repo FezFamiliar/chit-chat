@@ -52,3 +52,8 @@
 .avatar-profile{
 	border-radius:50%;
 }
+
+.post_action{
+	float:right;
+	background-image:url("../");
+}
