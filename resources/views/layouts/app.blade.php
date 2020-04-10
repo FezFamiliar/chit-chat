@@ -17,6 +17,7 @@
   integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
   crossorigin="anonymous"></script>
   <script src="{{ asset('js/show-likes.js') }}" defer></script>
+  <script src="{{ asset('js/editpost.js') }}" defer></script>
   <script src="{{ asset('js/dropzone.js') }}" defer></script>
 </head>
 <body>

@@ -9,10 +9,10 @@
 <div class="media-body">
 
 	@if($post->user_id == Auth::user()->id)
-		<a id="PostAction" class="post_action" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre></a>
+		<a class="post_action" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre></a>
 
 		<div class="dropdown-menu dropdown-menu-right" aria-labelledby="PostAction">
-			<a href="" class="dropdown-item">Edit</a>
+			<li  class="dropdown-item" id="edit_post">Edit</li>
 			<a href="{{ route('delete.post', ['postid' => $post->id]) }}" class="dropdown-item">Delete</a>
 		</div>
 	@endif
@@ -45,7 +45,7 @@
 			</a>
 			<div class="media-body">
 				@if($reply->user_id == Auth::user()->id)
-					<a id="PostAction" class="post_action" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre></a>
+					<a class="post_action" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre></a>
 
 					<div class="dropdown-menu dropdown-menu-right" aria-labelledby="PostAction">
 						<a href="" class="dropdown-item">Edit</a>

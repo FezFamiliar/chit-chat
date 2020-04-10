@@ -125,7 +125,7 @@ class PostsController extends Controller
 
             $post->delete();
 
-            return redirect()->route('timeline')->with('info','Post Deleted Successfully.');
+            return redirect()->back()->with('info','Post Deleted Successfully.');
             
     }
 }
