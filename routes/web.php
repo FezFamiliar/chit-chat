@@ -94,3 +94,11 @@ Route::get('/show/likes/{postid}', [
 	'uses' => 'PostsController@showLikes'
 
 ])->middleware('auth');
+
+
+
+Route::get('/post/delete/{postid}', [
+	'as' => 'delete.post',
+	'uses' => 'PostsController@DeletePost'
+
+])->middleware('auth');

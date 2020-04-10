@@ -11,7 +11,7 @@
 
 	<div class="dropdown-menu dropdown-menu-right" aria-labelledby="PostAction">
 		<a href="" class="dropdown-item">Edit</a>
-		<a href="" class="dropdown-item">Delete</a>
+		<a href="{{ route('delete.post', ['postid' => $post->id]) }}" class="dropdown-item">Delete</a>
 	</div>
 	<h4 class="media-heading"><a href="{{ route('user.profile', ['username' => $post->user->name]) }}">{{ $post->user->name }}</a></h4>
 	@if(strpos($post->body, 'http') === 0)

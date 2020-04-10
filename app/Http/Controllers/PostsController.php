@@ -103,4 +103,29 @@ class PostsController extends Controller
 
         return response()->json(['success'=> $get_users]);
     }
+
+
+    public function DeletePost($statusID)
+    {
+
+            $post = Post::find($statusID);
+
+            if(!$post)
+            {
+                return redirect()->route('timeline')->with('info','that post doesnt exist.');
+            }
+            else
+            {
+
+                if(Auth::user()->id != $post->user_id)
+                {
+                    return redirect()->route('timeline')->with('info','You can\'t delete that post.');
+                }
+            }
+
+            $post->delete();
+
+            return redirect()->route('timeline')->with('info','Post Deleted Successfully.');
+            
+    }
 }
