@@ -22,7 +22,7 @@
                   <input class="form-control my-0 py-1" type="text" placeholder="Search" aria-label="Search" name="query">
                   <div class="input-group-append">
                     <button type="submit" id="something">
-                      <span class="input-group-text cyan lighten-2" id="basic-text1"><img src="{{ asset('img/search.png') }}"></span>
+                      <span class="input-group-text cyan lighten-2" id="basic-text1"><img src="{{ asset('img/misc/search.png') }}"></span>
                     </button>
                     
                   </div>

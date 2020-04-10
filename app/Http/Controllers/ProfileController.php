@@ -15,7 +15,6 @@ class ProfileController extends Controller
 
 
     	$user = User::where('name',$username)->first();
-
     	if($user == null){
     		abort(404);
     	}
