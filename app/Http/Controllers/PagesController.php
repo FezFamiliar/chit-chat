@@ -26,4 +26,9 @@ class PagesController extends Controller
     	return view('pages.timeline')->with('posts',$posts);
     }
 
+    public function RenderSettings()
+    {
+        return view('settings.settings');
+    }
+
 }

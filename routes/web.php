@@ -108,3 +108,8 @@ Route::post('/post/edit/', [
 	'uses' => 'PostsController@EditPost'
 
 ])->middleware('auth');
+Route::get('/settings', [
+
+		'as' => 'settings',
+		'uses' => 'PagesController@RenderSettings'
+])->middleware('auth');
