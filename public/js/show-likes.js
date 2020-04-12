@@ -1,5 +1,10 @@
 $( document ).ready(function() {
   $(".post_action").tooltip();
+  $(".post_action").click(function(){
+
+      $(".tooltip").remove();
+  });
+
 $("#myModal").on("hidden.bs.modal", function(){
     $("#myModal .modal-body").html("");
 });

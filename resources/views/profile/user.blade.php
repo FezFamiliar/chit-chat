@@ -70,7 +70,7 @@
 
 								<div class="media-body">
 									@if($reply->user_id == Auth::user()->id)
-										<a class="post_action" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre title="Edit or delete this"></a>
+										<a class="post_action" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-hover="tooptip" v-pre title="Edit or delete this"></a>
 
 										<div class="dropdown-menu dropdown-menu-right" aria-labelledby="PostAction">
 											<li class="dropdown-item"><span class="edit"></span>Edit</li>
