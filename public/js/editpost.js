@@ -1,5 +1,13 @@
 $( document ).ready(function() {
 
+	$('.cancel_m').click(function(){
+
+		var parent_tx = $(this).parent().find(" > textarea");
+		
+		parent_tx.replaceWith("<p>" + parent_tx.text() + "</p>");
+		$('.cancel_m').hide();
+	});
+
 	$(".dropdown-menu-right > li").click(function(){
 
 		var target = $(this).parent().parent().find(" > p");
