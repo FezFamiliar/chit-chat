@@ -24,7 +24,9 @@ $( document ).ready(function() {
     		if(e.which == 13)
     		{
     			var content = textarea.val();
-
+    			if(content != '')
+    			{
+    				
 				    $.ajaxSetup({
 				        headers: 
 				        {
@@ -48,6 +50,12 @@ $( document ).ready(function() {
 			          		cancel_m.hide();
 			          }
 			   });
+
+    			}
+    			else
+    			{
+    				alert("You can't leave it blank");
+    			}
     		}
 		});
 	});
