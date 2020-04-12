@@ -63,3 +63,31 @@
 	width:20px;
 	margin-top:10px;
 }
+
+.edit::before
+{
+	background-image: url("../img/misc/edit.png");
+    background-repeat: no-repeat;
+    background-size: auto;
+    background-position: 0 -177px;
+    content: '';
+    display: inline-block;
+    height: 16px;
+    margin-right: 5px;
+    width: 16px;
+}
+
+.delete::before
+{
+
+	background-image: url("../img/misc/delete.png");
+    background-repeat: no-repeat;
+    background-size: auto;
+    background-position: -471px -951px;
+    content: '';
+    display: inline-block;
+    height: 16px;
+    margin-right: 5px;
+    width: 16px;
+
+}

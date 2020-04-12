@@ -37,8 +37,8 @@
 								<a class="post_action" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre></a>
 
 								<div class="dropdown-menu dropdown-menu-right" aria-labelledby="PostAction">
-									<a href="" class="dropdown-item" id="edit_post">Edit</a>
-									<a href="{{ route('delete.post', ['postid' => $post->id]) }}" class="dropdown-item">Delete</a>
+									<li class="dropdown-item" id="edit_post"><span class="edit"></span>Edit</li>
+									<a href="{{ route('delete.post', ['postid' => $post->id]) }}" class="dropdown-item"><span class="delete"></span>Delete</a>
 								</div>
 							@endif
 		   					<h4 class="media-heading"><a href="{{ route('user.profile', ['username' => $post->user->name]) }}">{{ $post->user->name }}</a></h4>
@@ -73,8 +73,8 @@
 										<a class="post_action" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre></a>
 
 										<div class="dropdown-menu dropdown-menu-right" aria-labelledby="PostAction">
-											<a href="" class="dropdown-item">Edit</a>
-											<a href="{{ route('delete.post', ['postid' => $reply->id]) }}" class="dropdown-item">Delete</a>
+											<li class="dropdown-item"><span class="edit"></span>Edit</li>
+											<a href="{{ route('delete.post', ['postid' => $reply->id]) }}" class="dropdown-item"><span class="delete"></span>Delete</a>
 										</div>
 									@endif
 									<h4 class="media-heading"><a href="{{ route('user.profile', ['username' => $reply->user->name]) }}">{{ $reply->user->name }}</a></h4>
