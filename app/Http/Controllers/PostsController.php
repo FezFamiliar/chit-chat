@@ -128,4 +128,14 @@ class PostsController extends Controller
             return redirect()->back()->with('info','Post Deleted Successfully.');
             
     }
+
+    public function EditPost(Request $request)
+    {
+        
+        $id = $request->input('id');
+        $data = $request->input('data');
+
+        $post = Post::find($id)->update(['body' => $data]);
+
+    }
 }

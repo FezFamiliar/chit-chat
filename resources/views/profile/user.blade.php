@@ -37,7 +37,7 @@
 								<a class="post_action" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre title="Edit or delete this"></a>
 
 								<div class="dropdown-menu dropdown-menu-right" aria-labelledby="PostAction">
-									<li class="dropdown-item" id="edit_post"><span class="edit"></span>Edit</li>
+									<li class="dropdown-item"><span class="edit"></span>Edit</li>
 									<a href="{{ route('delete.post', ['postid' => $post->id]) }}" class="dropdown-item"><span class="delete"></span>Delete</a>
 								</div>
 							@endif
@@ -50,7 +50,7 @@
 								@else
 									<p>{{ $post->body }}</p>
 								@endif
-							<span class="cancel_m">Cancel</span>
+							<span class="cancel_m" data-attr={{ $post->id }}>Cancel</span>
 							<ul class="list-inline">
 								<li><a href="{{ route('like.post',['postid' => $post->id]) }}">Like</a></li>
 								<li><span class="like-peek" data-attribute={{$post->id}}>{{ $post->likes->count() }}</span> &nbsp;{{ str_plural('Like', $post->likes()->count()) }}</li>
@@ -87,7 +87,7 @@
 										@else
 											<p>{{ $reply->body }}</p>
 										@endif
-										<span class="cancel_m">Cancel</span>
+										<span class="cancel_m" data-attr={{ $reply->id }}>Cancel</span>
 										<ul class="list-inline">
 											<li><a href="{{ route('like.post',['postid' => $reply->id]) }}">Like</a></li>
 											<li><span class="like-peek" data-attribute={{$reply->id}}>{{ $reply->likes->count() }}</span> &nbsp;{{ str_plural('Like', $reply->likes()->count()) }}</li>
