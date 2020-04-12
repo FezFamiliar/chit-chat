@@ -1,4 +1,5 @@
 $( document ).ready(function() {
+  $(".post_action").tooltip();
 $("#myModal").on("hidden.bs.modal", function(){
     $("#myModal .modal-body").html("");
 });
