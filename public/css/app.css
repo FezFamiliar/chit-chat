@@ -91,3 +91,15 @@
     width: 16px;
 
 }
+.cancel_m
+{
+	cursor:pointer;
+	color:blue;
+	font-size:10px;
+	display:none;
+}
+
+.cancel_m:hover
+{
+	text-decoration: underline;
+}

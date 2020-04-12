@@ -1,10 +1,15 @@
 $( document ).ready(function() {
 
-	$('#edit_post').click(function(){
+	$(".dropdown-menu-right > li").click(function(){
 
-		var text = document.createElement("textarea");
+		var target = $(this).parent().parent().find(" > p");
+		var text = target.text();
+		var textarea = $("<textarea class='form-control'>" + text + "</textarea>");
+		var cancel_m = $(this).parent().parent().find(".cancel_m:first");
+		
+		target.replaceWith(textarea);
 
-		$(this).closest('media-body p').append(text);
+		cancel_m.show();
 
 
 	});
