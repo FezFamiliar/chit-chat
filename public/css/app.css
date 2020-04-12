@@ -64,6 +64,9 @@
 	margin-top:10px;
 }
 
+.dropdown-menu-right > li{
+	cursor: pointer;
+}
 .edit::before
 {
 	background-image: url("../img/misc/edit.png");
