@@ -121,6 +121,7 @@
 
 .toggle_i
 {
+	border-right: 1px solid #ccc;
 	color: #3578e5;
     float: left;
     text-align: center;
@@ -163,4 +164,14 @@
     -webkit-user-select: none;
     width: 200%;
     z-index: 1;
+}
+
+#toggle_k90
+{
+	display:none;
+}
+
+.true_90
+{
+	left:0px !important;
 }

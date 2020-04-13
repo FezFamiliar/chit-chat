@@ -18,6 +18,7 @@
   crossorigin="anonymous"></script>
   <script src="{{ asset('js/show-likes.js') }}" defer></script>
   <script src="{{ asset('js/editpost.js') }}" defer></script>
+  <script src="{{ asset('js/toggle-checkbox.js') }}" defer></script>
   <script src="{{ asset('js/dropzone.js') }}" defer></script>
 </head>
 <body>
