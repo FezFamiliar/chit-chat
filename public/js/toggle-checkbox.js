@@ -1,16 +1,18 @@
 $( document ).ready(function() {
 
+	$(".toggle").click(function(){
 
-	$("#toggle_k90").click(function(){
+		var nearest = $(this).find(" > label"); // find the closest label
 
-
-		if($(".toggle label").hasClass("true_90"))
+		if(nearest.hasClass("true_90"))
 		{
-			$(".toggle label").removeClass("true_90");
+			nearest.removeClass("true_90");
+			//console.log("off");
 		}
 		else
 		{
-			$(".toggle label").addClass("true_90");
+			nearest.addClass("true_90");
+			//console.log("on");
 		}
 
 	});
