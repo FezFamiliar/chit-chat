@@ -30,7 +30,7 @@ class SettingsController extends Controller
     	$toggle = $request->input('toggle');
 
         //$request->session()->put('setting', 'active');
-        Session::pull();
+       // Session::pull();
         if($toggle !=  0) 
         {
             DB::table('settings_state')->insert(['user_id' => Auth::user()->id, 'setting_id' => $s_id, 'created_at' => NOW(), 'updated_at' => NOW()]);
