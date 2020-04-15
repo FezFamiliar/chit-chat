@@ -111,5 +111,11 @@ Route::post('/post/edit/', [
 Route::get('/settings', [
 
 		'as' => 'settings',
-		'uses' => 'PagesController@RenderSettings'
+		'uses' => 'SettingsController@getSettings'
+])->middleware('auth');
+
+Route::post('/toggle/{s_id}', [
+
+		'as' => 'toggle',
+		'uses' => 'SettingsController@toggleSettings'
 ])->middleware('auth');

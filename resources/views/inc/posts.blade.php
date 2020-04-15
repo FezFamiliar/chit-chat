@@ -13,7 +13,7 @@
 	@endif
 	<h4 class="media-heading"><a href="{{ route('user.profile', ['username' => $post->user->name]) }}">{{ $post->user->name }}</a></h4>
 	@if(strpos($post->body, 'http') === 0)
-		<a href="{{ $post->body }}">{{ $post->body }}</a>
+		<p><a href="{{ $post->body }}">{{ $post->body }}</a></p>
 	@elseif(strpos($post->body, 'http') > 0)
 		<p>{{ substr($post->body,0,strpos($post->body, 'http')) }}
 		<a href="{{ substr($post->body,strpos($post->body, 'http')) }}">{{ substr($post->body,strpos($post->body, 'http')) }}</a></p>
