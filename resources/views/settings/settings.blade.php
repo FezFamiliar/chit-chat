@@ -3,11 +3,7 @@
 @section('content')
 	<div class="container">
 		<div class="row">
-			@if(Session::has('cookies'))
-
-				<h1>sdfsdfsdf</h1>
-
-			@endif
+		{{-- 	{{ dd(Session::get('settings')) }} --}}
 			<table class="table">
 			  <thead>
 			    <tr>

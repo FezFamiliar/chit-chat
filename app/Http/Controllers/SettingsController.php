@@ -28,17 +28,32 @@ class SettingsController extends Controller
 
 
     	$toggle = $request->input('toggle');
-
-        //$request->session()->put('setting', 'active');
-       // Session::pull();
+ 
         if($toggle !=  0) 
         {
-            DB::table('settings_state')->insert(['user_id' => Auth::user()->id, 'setting_id' => $s_id, 'created_at' => NOW(), 'updated_at' => NOW()]);
+           // DB::table('settings_state')->insert(['user_id' => Auth::user()->id, 'setting_id' => $s_id, 'created_at' => NOW(), 'updated_at' => NOW()]);
+
+           $request->session()->push('settings', $s_id);
+
         }
     	else  
         {
-            DB::delete('DELETE FROM settings_state WHERE user_id = ' . Auth::user()->id . ' AND setting_id = ' . $s_id);
-        }
-                     
+           // DB::delete('DELETE FROM settings_state WHERE user_id = ' . Auth::user()->id . ' AND setting_id = ' . $s_id);
+$request->session()->forget('settings.'.$s_id);
+          /* foreach (Session::get('settings') as $key => $value)
+            {
+                echo $key . ' ' . $value . '<br>';
+                    if($value ==  $s_id)
+                    {
+                        echo 'found';
+                        $request->session()->forget('settings.'.$key);
+                    }
+
+            }
+                
+        }*/
+        
+}
+       // return $z;
     }
 }
