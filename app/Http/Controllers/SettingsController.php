@@ -15,10 +15,16 @@ class SettingsController extends Controller
     public function getSettings()
     {
 
+        $z = [];
+        $settings_all = DB::select(DB::raw('SELECT * FROM settings'));    
 
-        $settings = DB::select(DB::raw('SELECT settings.id, setting_id,user_id,body FROM `settings` LEFT JOIN `settings_state` ON settings.id = settings_state.setting_id ORDER BY settings.id ASC'));
+        $whichs = DB::table('settings_state')->where('user_id', Auth::user()->id)->get('setting_id')->toArray();
 
-    	return view('settings.settings')->with('settings',$settings);
+        foreach ($whichs  as $key => $value) {
+           array_push($z, $whichs[$key]->setting_id);
+        }
+
+    	return view('settings.settings',['settings_all' => $settings_all, 'z' => $z]);
     }
 
 
@@ -27,6 +33,9 @@ class SettingsController extends Controller
 
         $setting = Setting::find($s_id);
 
+        // echo '<pre>';
+        // print_r($setting);
+        // echo '</pre>';
 
     	$toggle = $request->input('toggle');
  

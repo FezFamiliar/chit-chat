@@ -3,20 +3,19 @@
 @section('content')
 	<div class="container">
 		<div class="row">
-		{{-- 	{{ dd(Session::get('settings')) }} --}}
 			<table class="table">
 			  <thead>
 			    <tr>
 			      <th>General</th>
-			      <th>Active</th>
+			      <th class="text-center"></th>
 			    </tr>
 			  </thead>
 			  <tbody>
- 			  	@foreach($settings as $setting)
-				    <tr>
-				      <td>{{ $setting->body }}</td>
-				      <td>@include('inc.checkbox')</td>
-				    </tr>
+ 			  	@foreach($settings_all as $setting)
+							<tr>
+						      <td>{{ $setting->body }}</td>
+						      <td class="text-right">@include('inc.checkbox')</td>
+						    </tr>
 			    @endforeach 
 			  </tbody>
 			</table>
