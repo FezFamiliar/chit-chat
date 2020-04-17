@@ -18,13 +18,6 @@ class SettingsController extends Controller
 
         $settings = DB::select(DB::raw('SELECT settings.id, setting_id,user_id,body FROM `settings` LEFT JOIN `settings_state` ON settings.id = settings_state.setting_id ORDER BY settings.id ASC'));
 
-    	//$settings = DB::table('settings')->get();
-
-
-        // echo '<pre>';
-        // print_r($settings);
-        // echo '</pre>';
-        // die();
     	return view('settings.settings')->with('settings',$settings);
     }
 
