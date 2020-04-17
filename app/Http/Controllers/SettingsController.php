@@ -33,9 +33,6 @@ class SettingsController extends Controller
 
         $setting = Setting::find($s_id);
 
-        // echo '<pre>';
-        // print_r($setting);
-        // echo '</pre>';
 
     	$toggle = $request->input('toggle');
  
