@@ -4,23 +4,21 @@
 	<div class="container">
 		<div class="row">
 			<table class="table">
-			  <thead>
 			    <tr>
 			      <th>General</th>
-			      <th class="text-center"></th>
+			      <th class="text-right" style="padding-right: 50px;">Active</th>
 			    </tr>
-			  </thead>
-			  <tbody>
  			  	@foreach($settings_all as $setting)
-							<tr>
-						      <td>{{ $setting->body }}</td>
-						      <td class="text-right">@include('inc.checkbox')</td>
-						    </tr>
+					<tr>
+				      <td>{{ $setting->body }}</td>
+				      <td class="text-right">@include('inc.checkbox')</td>
+				    </tr>
 			    @endforeach 
-			  </tbody>
 			</table>
 		</div>
 	</div>
+
+
 @endsection
 
 
