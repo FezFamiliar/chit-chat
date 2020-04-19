@@ -1,5 +1,6 @@
 $( document ).ready(function() {
 
+	var body = $('body');
 	$(".toggle").click(function(){
 
 		var nearest = $(this).find(" > label"); // find the closest label
@@ -21,11 +22,11 @@ $( document ).ready(function() {
 		           url: "/toggle/" + s_id,
 		           data: {toggle: "0"},
 		           beforeSend: function(){
-		           		$('body').addClass("loader");
+		           		body.addClass("loader");
 		           },
 		           success: function (data) {
 		          	   nearest.removeClass("true_90");
-		          	   $('body').removeClass("loader");
+		          	   body.removeClass("loader");
 		           }
 
 		   		 });
