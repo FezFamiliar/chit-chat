@@ -20,8 +20,12 @@ $( document ).ready(function() {
 		           type: "POST",
 		           url: "/toggle/" + s_id,
 		           data: {toggle: "0"},
+		           beforeSend: function(){
+		           		$('body').addClass("loader");
+		           },
 		           success: function (data) {
 		          	   nearest.removeClass("true_90");
+		          	   $('body').removeClass("loader");
 		           }
 
 		   		 });
@@ -34,8 +38,12 @@ $( document ).ready(function() {
 		           type: "POST",
 		           url: "/toggle/" + s_id,
 		           data: {toggle: "1"},
+		           beforeSend: function(){
+						$('body').addClass("loader");
+		           },
 		           success: function (data) {
-		          	nearest.addClass("true_90");
+		          		nearest.addClass("true_90");
+		          		$('body').removeClass("loader");
 		           }
 		          
 		   		 });
