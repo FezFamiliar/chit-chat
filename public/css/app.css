@@ -11,7 +11,9 @@
 *{
 	font-family: 'Nunito';
 }
-
+body, html {
+  height: 100%;
+}
 #something{
 	padding:0px;
 	border:none;
@@ -52,3 +54,46 @@
 .avatar-profile{
 	border-radius:50%;
 }
+
+#landing
+{
+	background-image: url("../img/misc/stock.jpg");
+	height: 94.3vh;
+	width: 100%;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: bottom;
+	background-attachment:fixed;
+}
+.content
+{
+
+ 		width: 300px;
+        height: 300px;
+        padding:50px;
+        background-color: transparent;
+        position:absolute; 
+        left:0; right:0;
+        top:0; bottom:0;
+        margin:auto;
+        max-width:100%;
+        max-height:100%;
+        overflow:hidden;
+        border: 5px solid white;
+        transition: opacity 0.2s ease-in-out;
+        -moz-box-shadow: -4px 4px 44px -15px rgba(143,119,143,1);
+		box-shadow: -4px 4px 44px -15px rgba(143,119,143,1);
+}
+.content:hover{
+
+	opacity: 0.3;
+	transition: opacity 0.2s ease-in-out;
+	cursor: pointer;
+
+}
+.content h2
+{
+	font-size:40px;
+	color:white;
+}
+.content a{text-decoration: none;}

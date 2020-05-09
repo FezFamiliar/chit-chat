@@ -28,12 +28,6 @@
 	                @else
 	                	<p class="text-center">Theres nothing here, yet</p>
 	                @endif
-	                <div class="card-body">
-
-	                    @if(Auth::guest())
-	                         <h1 class="text-center">You are not signed in!</h1> 
-	                    @endif
-	                </div>
 	             </div>
 	        </div>
 	    </div>
