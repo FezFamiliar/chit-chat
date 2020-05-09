@@ -1,5 +1,5 @@
 <?php
-
+use App\Events\Chat;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -119,3 +119,16 @@ Route::post('/toggle/{s_id}', [
 		'as' => 'toggle',
 		'uses' => 'SettingsController@toggleSettings'
 ])->middleware('auth');
+
+
+Route::get('/channel', function(){
+
+	return view('pages.channel');
+});
+
+Route::post('/send', function(){
+
+	$content = request()->content;
+	event(new Chat($content));
+	
+});
