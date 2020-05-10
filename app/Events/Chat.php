@@ -32,7 +32,7 @@ class Chat implements ShouldBroadcast
      */
     public function broadcastOn()
     {
-        return new Channel('chit-channel');
+        return new PrivateChannel('private-chit-channel');
     }
 
     public function broadcastAs()
