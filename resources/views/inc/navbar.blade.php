@@ -17,6 +17,9 @@
                <li class="nav-item">
                 <a class="nav-link" href="{{ url('/friends') }}">Friends</a>
               </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{ url('/channel') }}">Chat</a>
+              </li>
                 <form class="form-inline active-cyan-3 active-cyan-4" action="{{ route('search.results') }}">
                 <div class="input-group md-form form-sm form-2 pl-0">
                   <input class="form-control my-0 py-1" type="text" placeholder="Search" aria-label="Search" name="query">
@@ -65,7 +68,7 @@
 
                           <a class="dropdown-item" href="{{ route('user.profile', ['username' => Auth::user()->name]) }}">Profile</a>
                           <a class="dropdown-item" href="{{ route('profile.edit') }}">Update Profile</a>
-                          <a class="dropdown-item" href="{{ url('/settings') }}">Settings</a>
+                          <a class="dropdown-item" href="{{ url('/settings') }}"><svg height="16px" width="16px" version="1.1" viewBox="0 0 16 16" x="0px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" y="0px" class="svgIcon"><path d="M15.5,8.9V7.1l-2.2-0.5c-0.1-0.5-0.3-0.9-0.6-1.3l1.2-1.9l-1.2-1.2l-1.9,1.2C10.3,3,9.9,2.8,9.4,2.7L8.9,0.5 H7.1L6.6,2.7C6.1,2.8,5.7,3,5.2,3.2L3.3,2.1L2.1,3.3l1.2,1.9C3,5.7,2.8,6.1,2.7,6.6L0.5,7.1v1.7l2.2,0.5c0.1,0.5,0.3,0.9,0.6,1.3 l-1.2,1.9l1.2,1.2l1.9-1.2c0.4,0.2,0.9,0.4,1.3,0.6l0.5,2.2h1.7l0.5-2.2c0.5-0.1,0.9-0.3,1.3-0.6l1.9,1.2l1.2-1.2l-1.2-1.9 c0.2-0.4,0.4-0.9,0.6-1.3L15.5,8.9z M8,11c-1.7,0-3-1.3-3-3c0-1.7,1.3-3,3-3c1.7,0,3,1.3,3,3C11,9.7,9.7,11,8,11z" fill="#bec2c9" stroke="#bec2c9"></path></svg> Settings</a>
                           <hr>
                           <a class="dropdown-item" href="{{ route('logout') }}"
                              onclick="event.preventDefault();

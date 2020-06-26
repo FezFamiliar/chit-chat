@@ -33,6 +33,9 @@
 
 		     				</a>
 						<div class="media-body">
+							@if($post->user_id == Auth::user()->id)
+								@include('inc.edit', ['id' => $post->id])
+							@endif
 		   					<h4 class="media-heading"><a href="{{ route('user.profile', ['username' => $post->user->name]) }}">{{ $post->user->name }}</a></h4>
 		   						@if(strpos($post->body, 'http') === 0)
 									<a href="{{ $post->body }}">{{ $post->body }}</a>
@@ -42,6 +45,7 @@
 								@else
 									<p>{{ $post->body }}</p>
 								@endif
+							<span class="cancel_m" data-attr={{ $post->id }}>Cancel</span>
 							<ul class="list-inline">
 								<li><a href="{{ route('like.post',['postid' => $post->id]) }}">Like</a></li>
 								<li><span class="like-peek" data-attribute={{$post->id}}>{{ $post->likes->count() }}</span> &nbsp;{{ str_plural('Like', $post->likes()->count()) }}</li>
@@ -50,6 +54,7 @@
 					 {{-- @if($AuthUserIsFriend) --}} 
 						@foreach($post->replies as $reply)
 									<div class="media">
+
 								<a class="pull-left" href="{{ route('user.profile', ['username' => $reply->user->name]) }}">
 									@if(is_null($reply->user->profile))
 										<img class="media-object" src="https://www.gravatar.com/avatar/ {{ md5( $reply->user->emai) }}?d=mm" alt="placeholder">
@@ -60,6 +65,9 @@
 								</a>
 
 								<div class="media-body">
+									@if($reply->user_id == Auth::user()->id)
+										@include('inc.edit', ['id' => $reply->id])
+									@endif
 									<h4 class="media-heading"><a href="{{ route('user.profile', ['username' => $reply->user->name]) }}">{{ $reply->user->name }}</a></h4>
 										@if(strpos($reply->body, 'http') === 0)
 											<a href="{{ $reply->body }}">{{ $reply->body }}</a>
@@ -69,6 +77,7 @@
 										@else
 											<p>{{ $reply->body }}</p>
 										@endif
+										<span class="cancel_m" data-attr={{ $reply->id }}>Cancel</span>
 										<ul class="list-inline">
 											<li><a href="{{ route('like.post',['postid' => $reply->id]) }}">Like</a></li>
 											<li><span class="like-peek" data-attribute={{$reply->id}}>{{ $reply->likes->count() }}</span> &nbsp;{{ str_plural('Like', $reply->likes()->count()) }}</li>

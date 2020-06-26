@@ -25,5 +25,4 @@ class PagesController extends Controller
 
     	return view('pages.timeline')->with('posts',$posts);
     }
-
 }

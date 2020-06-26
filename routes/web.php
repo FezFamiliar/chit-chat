@@ -94,3 +94,41 @@ Route::get('/show/likes/{postid}', [
 	'uses' => 'PostsController@showLikes'
 
 ])->middleware('auth');
+
+
+
+Route::get('/post/delete/{postid}', [
+	'as' => 'delete.post',
+	'uses' => 'PostsController@DeletePost'
+
+])->middleware('auth');
+
+Route::post('/post/edit/', [
+	'as' => 'edit.post',
+	'uses' => 'PostsController@EditPost'
+
+])->middleware('auth');
+Route::get('/settings', [
+
+		'as' => 'settings',
+		'uses' => 'SettingsController@getSettings'
+])->middleware('auth');
+
+Route::post('/toggle/{s_id}', [
+
+		'as' => 'toggle',
+		'uses' => 'SettingsController@toggleSettings'
+])->middleware('auth');
+
+
+Route::get('/channel', function(){
+
+	return view('pages.channel');
+});
+
+
+Route::post('/send', [
+	'as' => 'send.messages',
+	'uses' => 'ChatController@exec'
+
+])->middleware('auth');

@@ -97,3 +97,141 @@ body, html {
 	color:white;
 }
 .content a{text-decoration: none;}
+
+.post_action{
+	float:right;
+	background-image:url("../img/misc/icons.png");
+	background-repeat:no-repeat;
+	background-size:auto;
+	background-position:-25px -71px;
+	height:20px;
+	width:20px;
+	margin-top:10px;
+}
+
+.dropdown-menu-right > li{
+	cursor: pointer;
+}
+.edit::before
+{
+	background-image: url("../img/misc/edit.png");
+    background-repeat: no-repeat;
+    background-size: auto;
+    background-position: 0 -177px;
+    content: '';
+    display: inline-block;
+    height: 16px;
+    margin-right: 5px;
+    width: 16px;
+}
+
+.delete::before
+{
+
+	background-image: url("../img/misc/delete.png");
+    background-repeat: no-repeat;
+    background-size: auto;
+    background-position: -471px -951px;
+    content: '';
+    display: inline-block;
+    height: 16px;
+    margin-right: 5px;
+    width: 16px;
+
+}
+.cancel_m
+{
+	cursor:pointer;
+	color:blue;
+	font-size:10px;
+	display:none;
+}
+
+.cancel_m:hover
+{
+	text-decoration: underline;
+}
+
+.toggle
+{
+	background-color: #ebedf0;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    display: inline-block;
+    height: 29px;
+    overflow: hidden;
+    position: relative;
+    width: 101px;
+}
+
+.toggle_i
+{
+	border-right: 1px solid #ccc;
+	color: #3578e5;
+    float: left;
+    text-align: center;
+    width: 50px;
+
+}
+.toggle_j
+{
+
+	background-color: #fff;
+    border-right: 1px solid #ccc;
+    border-radius: 2px;
+    border-top: none;
+    display: block;
+    float: left;
+    height: 100%;
+    position: relative;
+    width: 52px;
+    z-index: 2;
+}
+
+.toggle_k
+{
+	color: #4b4f56;
+    float: left;
+    text-align: center;
+    width: 50px;
+}
+
+.toggle label
+{
+	cursor: pointer;
+    font-size: 1.1em;
+    height: 100%;
+    left: -51px;
+    line-height: 31px;
+    position: absolute;
+    top: 0;
+    transition: .12s;
+    -webkit-user-select: none;
+    width: 200%;
+    z-index: 1;
+}
+
+.true_90
+{
+	left:0px !important;
+}
+.settings p
+{
+	float:left;
+	margin-top: 0.5px;
+	margin-right:20px;
+}
+.table th{border-top:0px;}
+.input-group-text{border-radius:0px;}
+.loader
+{
+	position:relative;
+	top:0;
+	left:0;
+	height:100%;
+	width:100%;
+	background:rgba(255, 255, 255, .9) url("../img/misc/spinning.gif") no-repeat 50% 30%;
+	opacity:0.7;
+	z-index: 99999;
+}
+
