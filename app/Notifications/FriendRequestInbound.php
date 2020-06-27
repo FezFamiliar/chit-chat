@@ -20,10 +20,9 @@ class FriendRequestInbound extends Notification
      *
      * @return void
      */
-    public function __construct($from, $to)
+    public function __construct($from)
     {
         $this->from = $from;
-        $this->to = $to;
     }
 
     /**
@@ -45,17 +44,16 @@ class FriendRequestInbound extends Notification
      */
     public function toMail($notifiable)
     {
-
         return (new MailMessage)
                     ->line(new HtmlString('You received a friend request from <b>' . $this->from . '</b>!'))
                     ->action('View Friend Request', url("/user/" . $this->from))
                     ->line('Thank you for using our application!');
     }
 
-    public function toDatabase()
+    public function toDatabase($notifiable)
     {
         return [
-            $this->from . ' sent a friend request to ' . $this->to
+            $this->from . ' sent a friend request to ' . $notifiable->name
         ];
     }
 
