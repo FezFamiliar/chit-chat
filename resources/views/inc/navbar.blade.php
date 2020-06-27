@@ -36,6 +36,17 @@
 
           <!-- Right Side Of Navbar -->
           <ul class="navbar-nav ml-auto">
+          <li class="nav-item dropdown">
+                    <a id="notification" class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre><i class="fa fa-bell"></i></a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="notification">
+
+                    @for($i = 0; $i < 10; $i++)
+                        <a class="dropdown-item" href="something">fff</a>
+                    @endfor
+                    
+                        
+                    </div>
+                  </li>
               <!-- Authentication Links -->
               @guest
                   <li class="nav-item">
@@ -48,7 +59,7 @@
                   @endif
               @else
 
-                  <li class="nav-item">
+              <li class="nav-item">
                     <a class="nav-link" href="{{ route('user.profile', ['username' => Auth::user()->name]) }}">
                         @if(is_null(Auth::user()->profile))
                               <img  class="avatar-profile" src="https://www.gravatar.com/avatar/ {{ md5(Auth::user()->email) }}?d=mm" width="20" height="20">
@@ -80,6 +91,7 @@
                           </form>
                       </div>
                   </li>
+
               @endguest
           </ul>
       </div>

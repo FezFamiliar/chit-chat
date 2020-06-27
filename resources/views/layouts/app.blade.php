@@ -12,6 +12,9 @@
     <link rel="stylesheet"    href="{{ asset('css/basic.css') }}" >
     <link rel="stylesheet"    href="{{ asset('css/dropzone.css') }}" >
     <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css" 
+  rel="stylesheet"  type='text/css'>
+   
     <script
   src="https://code.jquery.com/jquery-3.4.1.min.js"
   integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
@@ -22,6 +25,7 @@
   <script src="{{ asset('js/editpost.js') }}" defer></script>
   <script src="{{ asset('js/toggle-checkbox.js') }}" defer></script>
   <script src="{{ asset('js/dropzone.js') }}" defer></script>
+  
 </head>
 <body>
     <div id="app">
