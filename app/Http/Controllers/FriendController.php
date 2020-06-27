@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\User;
 use Illuminate\Support\Facades\DB;
+use App\Notifications\FriendRequestInbound;
 class FriendController extends Controller
 {
     
@@ -49,9 +50,10 @@ class FriendController extends Controller
     	}
 
 
-
+     
     	Auth::user()->addFriend($user);
-
+        $user->notify(new FriendRequestInbound(Auth::user()->name, $user->name)); // notify the user via email that he has a friend request from me
+        dd('ffffffff');
     	return redirect()->route('user.profile',['username' => $user->name])->with('info','Friend Request Sent.');
     }
 
