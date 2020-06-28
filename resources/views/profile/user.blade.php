@@ -26,7 +26,7 @@
 		     				<a class="pull-left" href="{{ route('user.profile', ['username' => $post->user->name]) }}">
 
 									@if(is_null($post->user->profile))
-										<img class="media-object" src="https://www.gravatar.com/avatar/ {{ md5( $post->user->emai) }}?d=mm" alt="placeholder">
+										<img class="media-object" src="{{ asset('img/misc/mysteryman.png') }}" alt="placeholder">
 									@else
 										<img class="media-object" src="{{ asset('img') . $post->user->profile }}" alt="placeholder">
 									@endif
@@ -57,7 +57,7 @@
 
 								<a class="pull-left" href="{{ route('user.profile', ['username' => $reply->user->name]) }}">
 									@if(is_null($reply->user->profile))
-										<img class="media-object" src="https://www.gravatar.com/avatar/ {{ md5( $reply->user->emai) }}?d=mm" alt="placeholder">
+										<img class="media-object" src="{{ asset('img/misc/mysteryman.png') }}" alt="placeholder">
 									@else
 										<img class="media-object" src="{{ asset('img') . $reply->user->profile }}" alt="placeholder">
 									@endif

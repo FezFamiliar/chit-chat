@@ -3,7 +3,7 @@
 		@if(!is_null($user->profile))
 			<img src="{{ asset('img') . $user->profile}}" alt="palceholder" class="media-object" width="80" height="80">
 		@else
-			<img src="https://www.gravatar.com/avatar/{{ md5($user->email) }}?d=mm" alt="palceholder" class="media-object">
+			<img src="{{ asset('img/misc/mysteryman.png') }}" alt="palceholder" class="media-object">
 		@endif
 	</a>
 	<div class="media-body">

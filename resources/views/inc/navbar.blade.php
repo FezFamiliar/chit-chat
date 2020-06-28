@@ -62,7 +62,7 @@
               <li class="nav-item">
                     <a class="nav-link" href="{{ route('user.profile', ['username' => Auth::user()->name]) }}">
                         @if(is_null(Auth::user()->profile))
-                              <img  class="avatar-profile" src="https://www.gravatar.com/avatar/ {{ md5(Auth::user()->email) }}?d=mm" width="20" height="20">
+                              <img  class="avatar-profile" src="{{ asset('img/misc/mysteryman.png') }}" width="20" height="20">
                         @else
                               <img src="{{ asset('img/avatar/') . Auth::user()->profile }}" class="avatar-profile">
                         @endif

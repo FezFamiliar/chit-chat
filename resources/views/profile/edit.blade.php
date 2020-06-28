@@ -10,7 +10,7 @@
 					@csrf
 					<div class="form-group">
 						@if(is_null(Auth::user()->profile))
-							<img class="media-object" src="https://www.gravatar.com/avatar/ {{ md5(Auth::user()->emai) }}?d=mm" alt="placeholder">
+							<img class="media-object" src="{{ asset('img/misc/mysteryman.png') }}" alt="placeholder">
 						@else
 							<img class="media-object" src="{{ asset('img\\') . Auth::user()->profile }}" alt="placeholder">
 						@endif
